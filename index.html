@@ -1,212 +1,294 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#111827">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
-<title>Chi Tiêu V2</title>
-  
-<link rel="apple-touch-icon" href="./icon-512.PNG">
-<link rel="manifest" href="./manifest.json">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
-<style>
-*{box-sizing:border-box}
-body{
-  margin:0;
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-  background:#f3f4f6;
-  color:#111827;
-}
-body.dark{background:#111827;color:#f9fafb}
-.container{
-  max-width:600px;
-  margin:auto;
-  padding:18px 14px 40px;
-}
-h1{margin:5px 0 4px;font-size:28px}
-.subtitle{color:#6b7280;margin-bottom:18px}
-.dark .subtitle{color:#9ca3af}
+  <title>Chi Tiêu V2</title>
 
-.card{
-  background:white;
-  border-radius:18px;
-  padding:16px;
-  margin-bottom:14px;
-  box-shadow:0 3px 12px rgba(0,0,0,.06);
-}
-.dark .card{background:#1f2937}
+  <link rel="apple-touch-icon" href="./icon-1024.PNG">
+  <link rel="manifest" href="./manifest.json">
 
-.input-row{display:flex;gap:8px}
-input,select,button{
-  font:inherit;
-  border-radius:12px;
-}
-input,select{
-  border:1px solid #d1d5db;
-  padding:13px;
-  background:white;
-  color:#111827;
-}
-.dark input,.dark select{
-  background:#374151;
-  color:white;
-  border-color:#4b5563;
-}
-#expenseInput{flex:1}
-button{
-  border:0;
-  padding:12px 15px;
-  font-weight:600;
-  cursor:pointer;
-}
-.add-btn{
-  background:#111827;
-  color:white;
-}
-.dark .add-btn{background:#f9fafb;color:#111827}
+  <meta name="theme-color" content="#111827">
 
-.stats{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:8px;
-}
-.stat{
-  background:#f9fafb;
-  padding:12px 8px;
-  border-radius:14px;
-  text-align:center;
-}
-.dark .stat{background:#374151}
-.stat small{display:block;color:#6b7280;font-size:12px}
-.dark .stat small{color:#d1d5db}
-.stat strong{display:block;margin-top:5px;font-size:17px}
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-.section-title{
-  font-size:18px;
-  font-weight:700;
-  margin-bottom:12px;
-}
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      background: #f3f4f6;
+      color: #111827;
+    }
 
-.month-item,.year-item{
-  padding:14px 4px;
-  border-bottom:1px solid #e5e7eb;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-.dark .month-item,.dark .year-item{
-  border-color:#374151;
-}
-.month-item:last-child,.year-item:last-child{border-bottom:0}
-.month-name{font-weight:600}
-.amount{font-weight:700}
+    body.dark {
+      background: #111827;
+      color: #f9fafb;
+    }
 
-.transaction{
-  display:flex;
-  justify-content:space-between;
-  gap:10px;
-  padding:12px 0;
-  border-bottom:1px solid #e5e7eb;
-}
-.dark .transaction{border-color:#374151}
-.transaction:last-child{border-bottom:0}
-.tx-info{flex:1}
-.tx-title{font-weight:600}
-.tx-date{font-size:12px;color:#6b7280;margin-top:3px}
-.tx-right{text-align:right;white-space:nowrap}
-.tx-amount{font-weight:700}
-.delete{
-  margin-top:5px;
-  padding:5px 8px;
-  background:#fee2e2;
-  color:#991b1b;
-  font-size:12px;
-}
+    .container {
+      width: 100%;
+      max-width: 650px;
+      margin: auto;
+      padding: 16px;
+    }
 
-.category{
-  display:inline-block;
-  margin-top:5px;
-  font-size:12px;
-  color:#6b7280;
-}
+    h1 {
+      text-align: center;
+      margin: 10px 0 20px;
+      font-size: 28px;
+    }
 
-.toolbar{
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
-}
-.toolbar button{
-  background:#e5e7eb;
-  color:#111827;
-}
-.dark .toolbar button{
-  background:#374151;
-  color:#f9fafb;
-}
+    .card {
+      background: white;
+      border-radius: 18px;
+      padding: 16px;
+      margin-bottom: 14px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.07);
+    }
 
-.search{width:100%;margin-bottom:10px}
+    body.dark .card {
+      background: #1f2937;
+      box-shadow: none;
+    }
 
-.budget-box{
-  margin-top:10px;
-  padding:12px;
-  background:#f9fafb;
-  border-radius:12px;
-}
-.dark .budget-box{background:#374151}
+    .input-row {
+      display: flex;
+      gap: 8px;
+    }
 
-.progress{
-  height:10px;
-  background:#e5e7eb;
-  border-radius:20px;
-  overflow:hidden;
-  margin-top:8px;
-}
-.progress-bar{
-  height:100%;
-  width:0%;
-  background:#111827;
-}
-.dark .progress{background:#4b5563}
-.dark .progress-bar{background:#f9fafb}
+    input {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #d1d5db;
+      border-radius: 12px;
+      font-size: 16px;
+      outline: none;
+      background: white;
+      color: #111827;
+    }
 
-.empty{
-  text-align:center;
-  color:#6b7280;
-  padding:20px 0;
-}
+    body.dark input {
+      background: #374151;
+      color: white;
+      border-color: #4b5563;
+    }
 
-.modal{
-  display:none;
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.5);
-  z-index:10;
-  padding:20px;
-}
-.modal-box{
-  max-width:500px;
-  margin:70px auto;
-  background:white;
-  border-radius:18px;
-  padding:18px;
-}
-.dark .modal-box{background:#1f2937}
-.modal-actions{
-  display:flex;
-  gap:8px;
-  margin-top:12px;
-}
-.modal-actions button{flex:1}
+    button {
+      border: none;
+      border-radius: 12px;
+      padding: 12px 15px;
+      font-size: 15px;
+      cursor: pointer;
+    }
 
-.footer{
-  text-align:center;
-  color:#9ca3af;
-  font-size:12px;
-  margin-top:20px;
-}
-</style>
+    .btn-primary {
+      background: #111827;
+      color: white;
+    }
+
+    .btn-danger {
+      background: #fee2e2;
+      color: #b91c1c;
+    }
+
+    .btn-secondary {
+      background: #e5e7eb;
+      color: #111827;
+    }
+
+    body.dark .btn-secondary {
+      background: #374151;
+      color: white;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+
+    .stat {
+      text-align: center;
+      padding: 12px 5px;
+      background: #f9fafb;
+      border-radius: 14px;
+    }
+
+    body.dark .stat {
+      background: #374151;
+    }
+
+    .stat-title {
+      font-size: 13px;
+      opacity: 0.7;
+    }
+
+    .stat-value {
+      font-size: 17px;
+      font-weight: bold;
+      margin-top: 5px;
+    }
+
+    .section-title {
+      font-weight: bold;
+      font-size: 18px;
+      margin-bottom: 12px;
+    }
+
+    .expense {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 0;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    body.dark .expense {
+      border-color: #374151;
+    }
+
+    .expense:last-child {
+      border-bottom: none;
+    }
+
+    .expense-left {
+      min-width: 0;
+    }
+
+    .expense-note {
+      font-weight: 600;
+      word-break: break-word;
+    }
+
+    .expense-meta {
+      font-size: 12px;
+      opacity: 0.65;
+      margin-top: 4px;
+    }
+
+    .expense-right {
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .amount {
+      font-weight: bold;
+    }
+
+    .category {
+      font-size: 12px;
+      margin-top: 4px;
+    }
+
+    .delete-btn {
+      margin-top: 5px;
+      padding: 5px 8px;
+      font-size: 12px;
+      background: #fee2e2;
+      color: #b91c1c;
+    }
+
+    .tools {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+    }
+
+    .month-item,
+    .year-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px;
+      background: #f9fafb;
+      border-radius: 12px;
+      margin-bottom: 8px;
+    }
+
+    body.dark .month-item,
+    body.dark .year-item {
+      background: #374151;
+    }
+
+    .budget-bar {
+      width: 100%;
+      height: 12px;
+      background: #e5e7eb;
+      border-radius: 20px;
+      overflow: hidden;
+      margin-top: 10px;
+    }
+
+    body.dark .budget-bar {
+      background: #4b5563;
+    }
+
+    .budget-progress {
+      height: 100%;
+      width: 0%;
+      background: #111827;
+      transition: width 0.3s;
+    }
+
+    .empty {
+      text-align: center;
+      opacity: 0.6;
+      padding: 15px;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 1000;
+      padding: 20px;
+    }
+
+    .modal-content {
+      max-width: 600px;
+      max-height: 85vh;
+      overflow: auto;
+      margin: 40px auto;
+      background: white;
+      border-radius: 18px;
+      padding: 18px;
+    }
+
+    body.dark .modal-content {
+      background: #1f2937;
+    }
+
+    .close-btn {
+      float: right;
+      font-size: 20px;
+      background: transparent;
+    }
+
+    .hint {
+      font-size: 13px;
+      opacity: 0.65;
+      margin-top: 8px;
+    }
+
+    @media (max-width: 450px) {
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .input-row {
+        flex-direction: column;
+      }
+
+      .tools {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -214,125 +296,154 @@ button{
 <div class="container">
 
   <h1>💰 Chi Tiêu</h1>
-  <div class="subtitle">Quản lý chi tiêu cá nhân</div>
 
-  <!-- NHẬP -->
+  <!-- NHẬP CHI TIÊU -->
   <div class="card">
+    <div class="section-title">➕ Thêm khoản chi</div>
+
     <div class="input-row">
-      <input id="expenseInput"
-             placeholder="VD: 50k ăn sáng"
-             autocomplete="off">
-      <button class="add-btn" onclick="addExpense()">＋</button>
+      <input
+        id="expenseInput"
+        type="text"
+        placeholder="Ví dụ: 50k xăng"
+        autocomplete="off"
+      >
+
+      <button class="btn-primary" onclick="addExpense()">
+        Thêm
+      </button>
     </div>
 
-    <div style="font-size:12px;color:#6b7280;margin-top:8px">
-      Ví dụ: 50k ăn sáng · 100k xăng · 1.5tr mua đồ
+    <div class="hint">
+      Ví dụ: 50k ăn sáng · 50.000 xăng · 1,5tr mua đồ · 2 triệu tiền nhà
     </div>
   </div>
 
   <!-- THỐNG KÊ -->
   <div class="card">
+    <div class="section-title">📊 Tổng quan</div>
+
     <div class="stats">
+
       <div class="stat">
-        <small>Hôm nay</small>
-        <strong id="todayTotal">0đ</strong>
+        <div class="stat-title">Hôm nay</div>
+        <div class="stat-value" id="todayTotal">0đ</div>
       </div>
 
       <div class="stat">
-        <small>Tháng này</small>
-        <strong id="monthTotal">0đ</strong>
+        <div class="stat-title">Tháng này</div>
+        <div class="stat-value" id="monthTotal">0đ</div>
       </div>
 
       <div class="stat">
-        <small>Năm nay</small>
-        <strong id="yearTotal">0đ</strong>
+        <div class="stat-title">Năm nay</div>
+        <div class="stat-value" id="yearTotal">0đ</div>
       </div>
+
     </div>
   </div>
 
   <!-- NGÂN SÁCH -->
   <div class="card">
-    <div class="section-title">💵 Ngân sách tháng</div>
+    <div class="section-title">🎯 Ngân sách tháng</div>
 
-    <div class="input-row">
-      <input id="budgetInput"
-             type="number"
-             placeholder="Ví dụ: 10000000">
-      <button onclick="saveBudget()">Lưu</button>
+    <input
+      id="budgetInput"
+      type="number"
+      placeholder="Nhập ngân sách tháng"
+      onchange="saveBudget()"
+    >
+
+    <div class="budget-bar">
+      <div class="budget-progress" id="budgetProgress"></div>
     </div>
 
-    <div class="budget-box">
-      <div id="budgetText">Chưa đặt ngân sách</div>
-      <div class="progress">
-        <div class="progress-bar" id="budgetProgress"></div>
-      </div>
+    <div class="hint" id="budgetText">
+      Chưa đặt ngân sách
     </div>
   </div>
 
   <!-- CÔNG CỤ -->
   <div class="card">
-    <div class="section-title">⚙️ Công cụ</div>
+    <div class="section-title">🛠 Công cụ</div>
 
-    <div class="toolbar">
-      <button onclick="toggleDark()">🌙 Dark Mode</button>
-      <button onclick="backupData()">💾 Sao lưu</button>
-      <button onclick="document.getElementById('restoreFile').click()">♻️ Khôi phục</button>
-      <button onclick="exportCSV()">📤 Xuất CSV</button>
+    <div class="tools">
+
+      <button class="btn-secondary" onclick="toggleDarkMode()">
+        🌙 Dark mode
+      </button>
+
+      <button class="btn-secondary" onclick="backupData()">
+        💾 Sao lưu
+      </button>
+
+      <button class="btn-secondary" onclick="document.getElementById('restoreFile').click()">
+        ♻️ Khôi phục
+      </button>
+
+      <button class="btn-secondary" onclick="exportCSV()">
+        📊 Xuất CSV
+      </button>
+
     </div>
 
-    <input type="file"
-           id="restoreFile"
-           accept=".json"
-           style="display:none"
-           onchange="restoreData(event)">
-  </div>
-
-  <!-- THÁNG -->
-  <div class="card">
-    <div class="section-title">📅 Các tháng đã chi</div>
-    <div id="monthList"></div>
-  </div>
-
-  <!-- NĂM -->
-  <div class="card">
-    <div class="section-title">📊 Tổng hợp theo năm</div>
-    <div id="yearList"></div>
+    <input
+      type="file"
+      id="restoreFile"
+      accept=".json"
+      style="display:none"
+      onchange="restoreData(event)"
+    >
   </div>
 
   <!-- TÌM KIẾM -->
   <div class="card">
-    <div class="section-title">🔎 Tìm giao dịch</div>
-    <input class="search"
-           id="searchInput"
-           placeholder="Tìm ăn sáng, xăng, cà phê..."
-           oninput="renderTransactions()">
+    <div class="section-title">🔎 Tìm kiếm</div>
 
-    <div id="transactionList"></div>
+    <input
+      id="searchInput"
+      type="text"
+      placeholder="Tìm theo nội dung..."
+      oninput="renderExpenses()"
+    >
   </div>
 
-  <div class="footer">
-    Chi Tiêu V2 · Dữ liệu được lưu trên thiết bị
+  <!-- THEO THÁNG -->
+  <div class="card">
+    <div class="section-title">📅 Chi tiêu theo tháng</div>
+    <div id="monthlyList"></div>
+  </div>
+
+  <!-- THEO NĂM -->
+  <div class="card">
+    <div class="section-title">📆 Chi tiêu theo năm</div>
+    <div id="yearlyList"></div>
+  </div>
+
+  <!-- LỊCH SỬ -->
+  <div class="card">
+    <div class="section-title">🧾 Lịch sử chi tiêu</div>
+    <div id="expenseList"></div>
   </div>
 
 </div>
 
-<!-- MODAL THÁNG -->
+<!-- MODAL -->
 <div class="modal" id="monthModal">
-  <div class="modal-box">
-    <h2 id="modalTitle"></h2>
-    <div id="modalContent"></div>
+  <div class="modal-content">
 
-    <div class="modal-actions">
-      <button onclick="closeModal()">Đóng</button>
+    <button class="close-btn" onclick="closeModal()">✕</button>
+
+    <div class="section-title" id="modalTitle">
+      Chi tiết tháng
     </div>
+
+    <div id="modalExpenses"></div>
+
   </div>
 </div>
 
 <script>
-
-/* =========================
-   DỮ LIỆU
-========================= */
 
 const STORAGE_KEY = "chi_tieu_v1";
 const BUDGET_KEY = "chi_tieu_budget";
@@ -346,552 +457,717 @@ let budget = Number(
 );
 
 
-/* =========================
-   TIỀN
-========================= */
+// ===============================
+// FORMAT TIỀN
+// ===============================
 
-function formatMoney(number){
-  return new Intl.NumberFormat("vi-VN").format(number) + "đ";
+function formatMoney(number) {
+
+  return new Intl.NumberFormat("vi-VN").format(
+    Math.round(number)
+  ) + "đ";
+
 }
 
 
-/* =========================
-   PARSE SỐ TIỀN
-========================= */
+// ===============================
+// PARSE SỐ TIỀN
+// ===============================
 
-function parseAmount(text){
+function parseAmount(text) {
 
-  const match = text.match(
+  let match = text.match(
     /(\d+(?:[.,]\d+)?)\s*(k|nghìn|ngàn|tr|triệu|đ)?/i
   );
 
-  if(!match) return 0;
-
-  let value = parseFloat(
-    match[1].replace(",", ".")
-  );
-
-  const unit = (match[2] || "").toLowerCase();
-
-  if(unit === "k" ||
-     unit === "nghìn" ||
-     unit === "ngàn"){
-    value *= 1000;
+  if (!match) {
+    return 0;
   }
 
-  if(unit === "tr" ||
-     unit === "triệu"){
-    value *= 1000000;
+  let numberText = match[1];
+  let unit = (match[2] || "").toLowerCase();
+
+  let number;
+
+  /*
+    Xử lý:
+
+    50.000
+    50,000
+    50.000đ
+    50k
+    1.5tr
+    1,5tr
+  */
+
+  if (
+    !unit &&
+    (
+      /^\d{1,3}([.,]\d{3})+$/.test(numberText)
+    )
+  ) {
+
+    number = Number(
+      numberText.replace(/[.,]/g, "")
+    );
+
+  } else {
+
+    number = Number(
+      numberText.replace(",", ".")
+    );
+
   }
 
-  return Math.round(value);
+  if (isNaN(number)) {
+    return 0;
+  }
+
+  if (
+    unit === "k" ||
+    unit === "nghìn" ||
+    unit === "ngàn"
+  ) {
+
+    number *= 1000;
+
+  }
+
+  if (
+    unit === "tr" ||
+    unit === "triệu"
+  ) {
+
+    number *= 1000000;
+
+  }
+
+  return Math.round(number);
+
 }
 
 
-/* =========================
-   PHÂN LOẠI
-========================= */
+// ===============================
+// NHẬN DIỆN DANH MỤC
+// ===============================
 
-function getCategory(text){
+function getCategory(text) {
 
-  const t = text.toLowerCase();
+  const t = text
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
 
-  if(/ăn|cơm|phở|bún|mì|cà phê|cafe|trà|nước|nhậu|bia|đồ ăn/.test(t))
-    return "🍜 Ăn uống";
+  // 🚗 ĐI LẠI
 
-  if(/xăng|grab|taxi|xe|bus|đi lại|gửi xe|parking/.test(t))
+  if (
+    /xang|do xang|dau xe|nhien lieu|petrol|grab|taxi|gojek|be\b|xe om|ship|giao hang|gui xe|bai xe|parking|cau duong|sua xe|bao duong xe|rua xe|oto|o to|xe may|xe buyt|bus/.test(t)
+  ) {
+
     return "🚗 Đi lại";
 
-  if(/mua|quần áo|giày|đồ|shopping|siêu thị/.test(t))
+  }
+
+
+  // 🍜 ĂN UỐNG
+
+  if (
+    /an sang|an trua|an toi|an vat|com|pho|bun|mi|my|chao|banh mi|do an|thuc an|ca phe|cafe|coffee|tra sua|nuoc uong|bia|quan an|nha hang|do uong/.test(t)
+  ) {
+
+    return "🍜 Ăn uống";
+
+  }
+
+
+  // 🛒 MUA SẮM
+
+  if (
+    /mua sam|quan ao|ao\b|quan\b|giay|dep|tui|balo|my pham|son|dau goi|sua rua mat|sieu thi|hang hoa|do dung|dien thoai|phu kien/.test(t)
+  ) {
+
     return "🛒 Mua sắm";
 
-  if(/game|phim|netflix|giải trí|chơi/.test(t))
+  }
+
+
+  // 🎮 GIẢI TRÍ
+
+  if (
+    /game|lien minh|lol|steam|netflix|youtube|phim|rap|karaoke|giai tri|spotify|nhac/.test(t)
+  ) {
+
     return "🎮 Giải trí";
 
+  }
+
+
+  // 📦 KHÁC
+
   return "📦 Khác";
+
 }
 
 
-/* =========================
-   THÊM CHI TIÊU
-========================= */
+// ===============================
+// THÊM CHI TIÊU
+// ===============================
 
-function addExpense(){
+function addExpense() {
 
   const input = document.getElementById("expenseInput");
 
   const text = input.value.trim();
 
-  if(!text) return;
+  if (!text) {
+    alert("Vui lòng nhập khoản chi.");
+    return;
+  }
 
   const amount = parseAmount(text);
 
-  if(amount <= 0){
+  if (!amount) {
     alert("Không nhận diện được số tiền.");
     return;
   }
 
-  expenses.push({
-    id: Date.now(),
-    text: text,
-    amount: amount,
-    category: getCategory(text),
-    date: new Date().toISOString()
-  });
+  const expense = {
 
-  save();
+    id: Date.now(),
+
+    text: text,
+
+    amount: amount,
+
+    category: getCategory(text),
+
+    date: new Date().toISOString()
+
+  };
+
+  expenses.unshift(expense);
+
+  saveExpenses();
 
   input.value = "";
 
   renderAll();
+
 }
 
 
-/* =========================
-   LƯU
-========================= */
+// ===============================
+// LƯU DỮ LIỆU
+// ===============================
 
-function save(){
+function saveExpenses() {
+
   localStorage.setItem(
     STORAGE_KEY,
     JSON.stringify(expenses)
   );
+
 }
 
 
-/* =========================
-   NGÀY
-========================= */
+// ===============================
+// NGÀY
+// ===============================
 
-function getDateParts(date){
+function dateKey(date) {
 
   const d = new Date(date);
 
-  return {
-    year:d.getFullYear(),
-    month:d.getMonth()+1,
-    day:d.getDate()
-  };
-}
+  return (
+    d.getFullYear() +
+    "-" +
+    String(d.getMonth() + 1).padStart(2, "0") +
+    "-" +
+    String(d.getDate()).padStart(2, "0")
+  );
 
-function monthKey(date){
-
-  const p = getDateParts(date);
-
-  return `${p.year}-${String(p.month).padStart(2,"0")}`;
 }
 
 
-/* =========================
-   THỐNG KÊ
-========================= */
+function monthKey(date) {
 
-function calculateStats(){
+  const d = new Date(date);
+
+  return (
+    d.getFullYear() +
+    "-" +
+    String(d.getMonth() + 1).padStart(2, "0")
+  );
+
+}
+
+
+function yearKey(date) {
+
+  return new Date(date)
+    .getFullYear()
+    .toString();
+
+}
+
+
+// ===============================
+// TỔNG HỢP
+// ===============================
+
+function getTotal(list) {
+
+  return list.reduce(
+    (sum, item) => sum + Number(item.amount || 0),
+    0
+  );
+
+}
+
+
+// ===============================
+// RENDER TỔNG
+// ===============================
+
+function renderStats() {
 
   const now = new Date();
 
-  const todayExpenses = expenses.filter(e => {
+  const today = dateKey(now);
 
-    const d = new Date(e.date);
+  const month = monthKey(now);
 
-    return d.getFullYear() === now.getFullYear() &&
-           d.getMonth() === now.getMonth() &&
-           d.getDate() === now.getDate();
+  const year = yearKey(now);
 
-  });
+  const todayTotal = getTotal(
+    expenses.filter(e => dateKey(e.date) === today)
+  );
 
-  const monthExpenses = expenses.filter(e => {
+  const monthTotal = getTotal(
+    expenses.filter(e => monthKey(e.date) === month)
+  );
 
-    const d = new Date(e.date);
-
-    return d.getFullYear() === now.getFullYear() &&
-           d.getMonth() === now.getMonth();
-
-  });
-
-  const yearExpenses = expenses.filter(e => {
-
-    const d = new Date(e.date);
-
-    return d.getFullYear() === now.getFullYear();
-
-  });
-
-  return {
-    today: todayExpenses.reduce((a,e)=>a+e.amount,0),
-    month: monthExpenses.reduce((a,e)=>a+e.amount,0),
-    year: yearExpenses.reduce((a,e)=>a+e.amount,0)
-  };
-}
-
-
-/* =========================
-   HIỂN THỊ THỐNG KÊ
-========================= */
-
-function renderStats(){
-
-  const s = calculateStats();
+  const yearTotal = getTotal(
+    expenses.filter(e => yearKey(e.date) === year)
+  );
 
   document.getElementById("todayTotal").textContent =
-    formatMoney(s.today);
+    formatMoney(todayTotal);
 
   document.getElementById("monthTotal").textContent =
-    formatMoney(s.month);
+    formatMoney(monthTotal);
 
   document.getElementById("yearTotal").textContent =
-    formatMoney(s.year);
+    formatMoney(yearTotal);
 
-  renderBudget(s.month);
+  renderBudget(monthTotal);
+
 }
 
 
-/* =========================
-   DANH SÁCH THÁNG
-========================= */
-
-function getMonthlyTotals(){
-
-  const result = {};
-
-  expenses.forEach(e => {
-
-    const key = monthKey(e.date);
-
-    if(!result[key])
-      result[key] = 0;
-
-    result[key] += e.amount;
-
-  });
-
-  return result;
-}
-
-
-function renderMonths(){
-
-  const list =
-    document.getElementById("monthList");
-
-  const totals = getMonthlyTotals();
-
-  const keys = Object.keys(totals)
-    .sort()
-    .reverse();
-
-  if(keys.length === 0){
-
-    list.innerHTML =
-      `<div class="empty">Chưa có dữ liệu</div>`;
-
-    return;
-  }
-
-  list.innerHTML = keys.map(key => {
-
-    const [year,month] = key.split("-");
-
-    return `
-      <div class="month-item"
-           onclick="showMonth('${key}')">
-
-        <div>
-          <div class="month-name">
-            🗓️ Tháng ${month}/${year}
-          </div>
-        </div>
-
-        <div class="amount">
-          ${formatMoney(totals[key])}
-        </div>
-
-      </div>
-    `;
-
-  }).join("");
-}
-
-
-/* =========================
-   TỔNG HỢP NĂM
-========================= */
-
-function renderYears(){
-
-  const list =
-    document.getElementById("yearList");
-
-  const totals = {};
-
-  expenses.forEach(e => {
-
-    const year =
-      new Date(e.date).getFullYear();
-
-    if(!totals[year])
-      totals[year] = 0;
-
-    totals[year] += e.amount;
-
-  });
-
-  const years =
-    Object.keys(totals)
-      .sort((a,b)=>b-a);
-
-  if(years.length === 0){
-
-    list.innerHTML =
-      `<div class="empty">Chưa có dữ liệu</div>`;
-
-    return;
-  }
-
-  list.innerHTML = years.map(year => {
-
-    return `
-      <div class="year-item">
-
-        <div>
-          <div class="month-name">
-            📊 Năm ${year}
-          </div>
-        </div>
-
-        <div class="amount">
-          ${formatMoney(totals[year])}
-        </div>
-
-      </div>
-    `;
-
-  }).join("");
-}
-
-
-/* =========================
-   XEM THÁNG
-========================= */
-
-function showMonth(key){
-
-  const list =
-    expenses.filter(e => monthKey(e.date) === key)
-            .sort((a,b)=>
-              new Date(b.date)-new Date(a.date)
-            );
-
-  const [year,month] = key.split("-");
-
-  document.getElementById("modalTitle").textContent =
-    `🗓️ Tháng ${month}/${year}`;
-
-  document.getElementById("modalContent").innerHTML =
-    list.map(e => transactionHTML(e)).join("");
-
-  document.getElementById("monthModal").style.display =
-    "block";
-}
-
-
-function closeModal(){
-
-  document.getElementById("monthModal").style.display =
-    "none";
-}
-
-
-/* =========================
-   GIAO DỊCH
-========================= */
-
-function transactionHTML(e){
-
-  const d = new Date(e.date);
-
-  const dateText =
-    d.toLocaleDateString("vi-VN") +
-    " " +
-    d.toLocaleTimeString("vi-VN",{
-      hour:"2-digit",
-      minute:"2-digit"
-    });
-
-  return `
-    <div class="transaction">
-
-      <div class="tx-info">
-
-        <div class="tx-title">
-          ${escapeHTML(e.text)}
-        </div>
-
-        <div class="category">
-          ${e.category}
-        </div>
-
-        <div class="tx-date">
-          ${dateText}
-        </div>
-
-      </div>
-
-      <div class="tx-right">
-
-        <div class="tx-amount">
-          ${formatMoney(e.amount)}
-        </div>
-
-        <button class="delete"
-                onclick="deleteExpense(${e.id})">
-          Xóa
-        </button>
-
-      </div>
-
-    </div>
-  `;
-}
-
-
-function renderTransactions(){
-
-  const list =
-    document.getElementById("transactionList");
-
-  const search =
-    document.getElementById("searchInput")
-            .value
-            .toLowerCase()
-            .trim();
-
-  let data =
-    [...expenses]
-      .sort((a,b)=>
-        new Date(b.date)-new Date(a.date)
-      );
-
-  if(search){
-
-    data = data.filter(e =>
-      e.text.toLowerCase().includes(search) ||
-      e.category.toLowerCase().includes(search)
-    );
-
-  }
-
-  data = data.slice(0,100);
-
-  if(data.length === 0){
-
-    list.innerHTML =
-      `<div class="empty">Không có giao dịch</div>`;
-
-    return;
-  }
-
-  list.innerHTML =
-    data.map(e => transactionHTML(e)).join("");
-}
-
-
-/* =========================
-   XÓA
-========================= */
-
-function deleteExpense(id){
-
-  if(!confirm("Xóa khoản chi này?"))
-    return;
-
-  expenses =
-    expenses.filter(e => e.id !== id);
-
-  save();
-
-  renderAll();
-}
-
-
-/* =========================
-   NGÂN SÁCH
-========================= */
-
-function saveBudget(){
-
-  const value =
-    Number(document.getElementById("budgetInput").value);
-
-  if(value <= 0){
-
-    alert("Nhập ngân sách hợp lệ.");
-
-    return;
-  }
-
-  budget = value;
+// ===============================
+// NGÂN SÁCH
+// ===============================
+
+function saveBudget() {
+
+  budget = Number(
+    document.getElementById("budgetInput").value || 0
+  );
 
   localStorage.setItem(
     BUDGET_KEY,
     budget
   );
 
-  renderBudget(calculateStats().month);
+  renderStats();
+
 }
 
 
-function renderBudget(monthTotal){
-
-  const text =
-    document.getElementById("budgetText");
+function renderBudget(monthTotal) {
 
   const progress =
     document.getElementById("budgetProgress");
 
-  if(!budget){
+  const text =
+    document.getElementById("budgetText");
+
+  if (!budget) {
+
+    progress.style.width = "0%";
 
     text.textContent =
       "Chưa đặt ngân sách";
 
-    progress.style.width = "0%";
-
     return;
+
   }
 
   const percent =
-    Math.round((monthTotal / budget) * 100);
-
-  text.textContent =
-    `${formatMoney(monthTotal)} / ${formatMoney(budget)} (${percent}%)`;
+    Math.min(
+      100,
+      (monthTotal / budget) * 100
+    );
 
   progress.style.width =
-    Math.min(percent,100) + "%";
+    percent + "%";
+
+  const remaining =
+    budget - monthTotal;
+
+  if (remaining >= 0) {
+
+    text.textContent =
+      "Còn " + formatMoney(remaining) +
+      " trong ngân sách tháng.";
+
+  } else {
+
+    text.textContent =
+      "⚠️ Đã vượt ngân sách " +
+      formatMoney(Math.abs(remaining)) +
+      ".";
+
+  }
+
 }
 
 
-/* =========================
-   BACKUP
-========================= */
+// ===============================
+// LỊCH SỬ
+// ===============================
 
-function backupData(){
+function renderExpenses() {
+
+  const container =
+    document.getElementById("expenseList");
+
+  const search =
+    document.getElementById("searchInput")
+      .value
+      .toLowerCase()
+      .trim();
+
+  let list = expenses;
+
+  if (search) {
+
+    list = expenses.filter(e =>
+      e.text.toLowerCase().includes(search) ||
+      e.category.toLowerCase().includes(search)
+    );
+
+  }
+
+  if (!list.length) {
+
+    container.innerHTML =
+      '<div class="empty">Chưa có khoản chi nào.</div>';
+
+    return;
+
+  }
+
+  container.innerHTML =
+    list.map(e => {
+
+      const d = new Date(e.date);
+
+      return `
+        <div class="expense">
+
+          <div class="expense-left">
+
+            <div class="expense-note">
+              ${escapeHTML(e.text)}
+            </div>
+
+            <div class="expense-meta">
+              ${d.toLocaleDateString("vi-VN")}
+              ${d.toLocaleTimeString("vi-VN", {
+                hour: "2-digit",
+                minute: "2-digit"
+              })}
+            </div>
+
+          </div>
+
+          <div class="expense-right">
+
+            <div class="amount">
+              ${formatMoney(e.amount)}
+            </div>
+
+            <div class="category">
+              ${e.category}
+            </div>
+
+            <button
+              class="delete-btn"
+              onclick="deleteExpense(${e.id})"
+            >
+              Xóa
+            </button>
+
+          </div>
+
+        </div>
+      `;
+
+    }).join("");
+
+}
+
+
+// ===============================
+// XÓA
+// ===============================
+
+function deleteExpense(id) {
+
+  if (!confirm("Bạn có chắc muốn xóa khoản này?")) {
+    return;
+  }
+
+  expenses =
+    expenses.filter(e => e.id !== id);
+
+  saveExpenses();
+
+  renderAll();
+
+}
+
+
+// ===============================
+// THEO THÁNG
+// ===============================
+
+function renderMonthly() {
+
+  const container =
+    document.getElementById("monthlyList");
+
+  const groups = {};
+
+  expenses.forEach(e => {
+
+    const key = monthKey(e.date);
+
+    if (!groups[key]) {
+      groups[key] = 0;
+    }
+
+    groups[key] += Number(e.amount);
+
+  });
+
+  const keys =
+    Object.keys(groups).sort().reverse();
+
+  if (!keys.length) {
+
+    container.innerHTML =
+      '<div class="empty">Chưa có dữ liệu.</div>';
+
+    return;
+
+  }
+
+  container.innerHTML =
+    keys.map(key => {
+
+      const [year, month] =
+        key.split("-");
+
+      return `
+        <div
+          class="month-item"
+          onclick="showMonth('${key}')"
+          style="cursor:pointer"
+        >
+
+          <div>
+            📅 Tháng ${month}/${year}
+          </div>
+
+          <strong>
+            ${formatMoney(groups[key])}
+          </strong>
+
+        </div>
+      `;
+
+    }).join("");
+
+}
+
+
+// ===============================
+// THEO NĂM
+// ===============================
+
+function renderYearly() {
+
+  const container =
+    document.getElementById("yearlyList");
+
+  const groups = {};
+
+  expenses.forEach(e => {
+
+    const key = yearKey(e.date);
+
+    if (!groups[key]) {
+      groups[key] = 0;
+    }
+
+    groups[key] += Number(e.amount);
+
+  });
+
+  const keys =
+    Object.keys(groups).sort().reverse();
+
+  if (!keys.length) {
+
+    container.innerHTML =
+      '<div class="empty">Chưa có dữ liệu.</div>';
+
+    return;
+
+  }
+
+  container.innerHTML =
+    keys.map(year => {
+
+      return `
+        <div class="year-item">
+
+          <div>
+            📆 Năm ${year}
+          </div>
+
+          <strong>
+            ${formatMoney(groups[year])}
+          </strong>
+
+        </div>
+      `;
+
+    }).join("");
+
+}
+
+
+// ===============================
+// MODAL THÁNG
+// ===============================
+
+function showMonth(key) {
+
+  const list =
+    expenses.filter(
+      e => monthKey(e.date) === key
+    );
+
+  const [year, month] =
+    key.split("-");
+
+  document.getElementById("modalTitle")
+    .textContent =
+    `📅 Chi tiết tháng ${month}/${year}`;
+
+  const container =
+    document.getElementById("modalExpenses");
+
+  if (!list.length) {
+
+    container.innerHTML =
+      '<div class="empty">Không có dữ liệu.</div>';
+
+  } else {
+
+    container.innerHTML =
+      list.map(e => {
+
+        const d =
+          new Date(e.date);
+
+        return `
+          <div class="expense">
+
+            <div class="expense-left">
+
+              <div class="expense-note">
+                ${escapeHTML(e.text)}
+              </div>
+
+              <div class="expense-meta">
+                ${d.toLocaleDateString("vi-VN")}
+              </div>
+
+            </div>
+
+            <div class="expense-right">
+
+              <div class="amount">
+                ${formatMoney(e.amount)}
+              </div>
+
+              <div class="category">
+                ${e.category}
+              </div>
+
+            </div>
+
+          </div>
+        `;
+
+      }).join("");
+
+  }
+
+  document.getElementById("monthModal")
+    .style.display = "block";
+
+}
+
+
+function closeModal() {
+
+  document.getElementById("monthModal")
+    .style.display = "none";
+
+}
+
+
+// ===============================
+// SAO LƯU
+// ===============================
+
+function backupData() {
 
   const data = {
 
-    version:2,
+    version: 2,
 
-    expenses:expenses,
+    expenses: expenses,
 
-    budget:budget,
+    budget: budget,
 
-    exportedAt:new Date().toISOString()
+    backupDate:
+      new Date().toISOString()
 
   };
 
   const blob =
     new Blob(
-      [JSON.stringify(data,null,2)],
-      {type:"application/json"}
+      [JSON.stringify(data, null, 2)],
+      {
+        type: "application/json"
+      }
     );
 
   const url =
@@ -908,52 +1184,83 @@ function backupData(){
   a.click();
 
   URL.revokeObjectURL(url);
+
 }
 
 
-/* =========================
-   RESTORE
-========================= */
+// ===============================
+// KHÔI PHỤC
+// ===============================
 
-function restoreData(event){
+function restoreData(event) {
 
   const file =
     event.target.files[0];
 
-  if(!file) return;
+  if (!file) {
+    return;
+  }
 
   const reader =
     new FileReader();
 
-  reader.onload = function(){
+  reader.onload = function(e) {
 
-    try{
+    try {
 
       const data =
-        JSON.parse(reader.result);
+        JSON.parse(e.target.result);
 
-      if(!Array.isArray(data.expenses))
-        throw new Error();
+      if (
+        !data.expenses ||
+        !Array.isArray(data.expenses)
+      ) {
 
-      expenses = data.expenses;
+        throw new Error(
+          "File không hợp lệ"
+        );
+
+      }
+
+      if (
+        !confirm(
+          "Khôi phục dữ liệu sẽ thay thế dữ liệu hiện tại. Tiếp tục?"
+        )
+      ) {
+
+        return;
+
+      }
+
+      expenses =
+        data.expenses;
 
       budget =
         Number(data.budget || 0);
 
-      save();
+      localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify(expenses)
+      );
 
       localStorage.setItem(
         BUDGET_KEY,
         budget
       );
 
+      document.getElementById(
+        "budgetInput"
+      ).value = budget || "";
+
       renderAll();
 
-      alert("Khôi phục dữ liệu thành công!");
+      alert("Khôi phục thành công!");
 
-    }catch{
+    } catch (error) {
 
-      alert("File backup không hợp lệ.");
+      alert(
+        "Không thể khôi phục file."
+      );
 
     }
 
@@ -961,37 +1268,46 @@ function restoreData(event){
 
   reader.readAsText(file);
 
-  event.target.value = "";
 }
 
 
-/* =========================
-   CSV
-========================= */
+// ===============================
+// CSV
+// ===============================
 
-function exportCSV(){
+function exportCSV() {
 
   let csv =
-    "Ngày,Nội dung,Số tiền,Danh mục\n";
+    "Ngày,Giờ,Nội dung,Số tiền,Danh mục\n";
 
   expenses.forEach(e => {
 
+    const d =
+      new Date(e.date);
+
     const date =
-      new Date(e.date)
-        .toLocaleString("vi-VN");
+      d.toLocaleDateString("vi-VN");
+
+    const time =
+      d.toLocaleTimeString("vi-VN");
+
+    const text =
+      `"${String(e.text).replace(/"/g, '""')}"`;
+
+    const category =
+      `"${String(e.category).replace(/"/g, '""')}"`;
 
     csv +=
-      `"${date}",` +
-      `"${e.text.replace(/"/g,'""')}",` +
-      `${e.amount},` +
-      `"${e.category}"\n`;
+      `"${date}","${time}",${text},${e.amount},${category}\n`;
 
   });
 
   const blob =
     new Blob(
       ["\uFEFF" + csv],
-      {type:"text/csv;charset=utf-8;"}
+      {
+        type: "text/csv;charset=utf-8;"
+      }
     );
 
   const url =
@@ -1008,103 +1324,123 @@ function exportCSV(){
   a.click();
 
   URL.revokeObjectURL(url);
+
 }
 
 
-/* =========================
-   DARK MODE
-========================= */
+// ===============================
+// DARK MODE
+// ===============================
 
-function toggleDark(){
+function toggleDarkMode() {
 
   document.body.classList.toggle("dark");
 
   localStorage.setItem(
     "chi_tieu_dark",
     document.body.classList.contains("dark")
+      ? "1"
+      : "0"
   );
+
 }
 
 
-/* =========================
-   ESCAPE HTML
-========================= */
+// ===============================
+// ESCAPE HTML
+// ===============================
 
-function escapeHTML(text){
+function escapeHTML(text) {
 
   return String(text)
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+
 }
 
 
-/* =========================
-   RENDER TẤT CẢ
-========================= */
+// ===============================
+// RENDER TẤT CẢ
+// ===============================
 
-function renderAll(){
+function renderAll() {
 
   renderStats();
 
-  renderMonths();
+  renderExpenses();
 
-  renderYears();
+  renderMonthly();
 
-  renderTransactions();
-
-}
-
-
-/* =========================
-   ENTER ĐỂ NHẬP
-========================= */
-
-document.getElementById("expenseInput")
-  .addEventListener("keydown",function(e){
-
-    if(e.key === "Enter")
-      addExpense();
-
-  });
-
-
-/* =========================
-   KHỞI ĐỘNG
-========================= */
-
-if(localStorage.getItem("chi_tieu_dark") === "true"){
-
-  document.body.classList.add("dark");
+  renderYearly();
 
 }
 
-if(budget){
 
-  document.getElementById("budgetInput").value =
-    budget;
+// ===============================
+// KHỞI ĐỘNG
+// ===============================
 
-}
+document.addEventListener(
+  "DOMContentLoaded",
+  function() {
 
-renderAll();
+    if (
+      localStorage.getItem(
+        "chi_tieu_dark"
+      ) === "1"
+    ) {
+
+      document.body.classList.add("dark");
+
+    }
+
+    document.getElementById(
+      "budgetInput"
+    ).value = budget || "";
+
+    renderAll();
+
+    document.getElementById(
+      "expenseInput"
+    ).addEventListener(
+      "keydown",
+      function(event) {
+
+        if (event.key === "Enter") {
+          addExpense();
+        }
+
+      }
+    );
+
+  }
+);
 
 
-/* =========================
-   SERVICE WORKER
-========================= */
+// ===============================
+// SERVICE WORKER
+// ===============================
 
-if("serviceWorker" in navigator){
+if ("serviceWorker" in navigator) {
 
-  window.addEventListener("load",() => {
+  window.addEventListener(
+    "load",
+    function() {
 
-    navigator.serviceWorker.register("./sw.js")
-      .catch(err =>
-        console.log("SW error:",err)
-      );
+      navigator.serviceWorker
+        .register("./sw.js")
+        .catch(function(error) {
+          console.log(
+            "Service Worker error:",
+            error
+          );
+        });
 
-  });
+    }
+  );
 
 }
 
