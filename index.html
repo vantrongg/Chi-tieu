@@ -559,53 +559,35 @@ function getCategory(text) {
     .replace(/[\u0300-\u036f]/g, "");
 
   // 🚗 ĐI LẠI
-
   if (
     /xang|do xang|dau xe|nhien lieu|petrol|grab|taxi|gojek|be\b|xe om|ship|giao hang|gui xe|bai xe|parking|cau duong|sua xe|bao duong xe|rua xe|oto|o to|xe may|xe buyt|bus/.test(t)
   ) {
-
     return "🚗 Đi lại";
-
   }
 
-
   // 🍜 ĂN UỐNG
-
   if (
     /an sang|an trua|an toi|an vat|com|pho|bun|mi|my|chao|banh mi|do an|thuc an|ca phe|cafe|coffee|tra sua|nuoc uong|bia|quan an|nha hang|do uong/.test(t)
   ) {
-
     return "🍜 Ăn uống";
-
   }
 
-
   // 🛒 MUA SẮM
-
   if (
     /mua sam|quan ao|ao\b|quan\b|giay|dep|tui|balo|my pham|son|dau goi|sua rua mat|sieu thi|hang hoa|do dung|dien thoai|phu kien/.test(t)
   ) {
-
     return "🛒 Mua sắm";
-
   }
 
-
   // 🎮 GIẢI TRÍ
-
   if (
     /game|lien minh|lol|steam|netflix|youtube|phim|rap|karaoke|giai tri|spotify|nhac/.test(t)
   ) {
-
     return "🎮 Giải trí";
-
   }
 
-
   // 📦 KHÁC
-
   return "📦 Khác";
-
 }
 
 
