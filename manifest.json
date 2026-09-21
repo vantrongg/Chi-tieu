@@ -1,0 +1,11 @@
+{
+  "name": "Chi Tiêu",
+  "short_name": "Chi Tiêu",
+  "description": "Ứng dụng quản lý chi tiêu cá nhân",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f4f5f7",
+  "theme_color": "#111827",
+  "orientation": "portrait",
+  "lang": "vi"
+}
