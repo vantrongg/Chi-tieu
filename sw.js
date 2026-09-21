@@ -1,8 +1,9 @@
-const CACHE = "chi-tieu-v1";
+const CACHE = "chi-tieu-v2";
 const FILES = [
   "./",
   "./index.html",
-  "./manifest.json"
+  "./manifest.json",
+  "./icon-512.PNG"
 ];
 self.addEventListener("install", event => {
   event.waitUntil(
