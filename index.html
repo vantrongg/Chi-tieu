@@ -305,7 +305,8 @@ button{
   color:white;
 }
 
-/* TOP EXPENSE */
+/* ================= TOP EXPENSE ================= */
+
 .top-controls{
   display:grid;
   grid-template-columns:1fr 1.5fr;
@@ -356,7 +357,61 @@ button{
   background:#374151;
 }
 
-/* SETTINGS */
+/* ================= PAGINATION ================= */
+
+.history-pagination{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  margin-top:15px;
+  padding-top:12px;
+  border-top:1px solid #e5e7eb;
+}
+
+.dark .history-pagination{
+  border-color:#374151;
+}
+
+.page-btn{
+  min-width:82px;
+  padding:10px 12px;
+  background:#e5e7eb;
+  color:#111827;
+  font-size:13px;
+  font-weight:600;
+}
+
+.dark .page-btn{
+  background:#374151;
+  color:white;
+}
+
+.page-btn:disabled{
+  opacity:.4;
+  cursor:not-allowed;
+}
+
+.page-info{
+  min-width:80px;
+  text-align:center;
+  font-size:13px;
+  font-weight:600;
+}
+
+.page-count{
+  margin-top:7px;
+  text-align:center;
+  font-size:12px;
+  color:#6b7280;
+}
+
+.dark .page-count{
+  color:#9ca3af;
+}
+
+/* ================= SETTINGS ================= */
+
 .setting-item{
   padding:14px 0;
   border-bottom:1px solid #e5e7eb;
@@ -391,7 +446,8 @@ button{
   color:white!important;
 }
 
-/* NAV */
+/* ================= NAV ================= */
+
 .bottom-nav{
   position:fixed;
   bottom:0;
@@ -443,6 +499,7 @@ button{
 }
 
 @media(max-width:420px){
+
   .top-controls{
     grid-template-columns:1fr 1fr;
   }
@@ -450,6 +507,12 @@ button{
   .card-value{
     font-size:18px;
   }
+
+  .page-btn{
+    min-width:75px;
+    padding:9px 8px;
+  }
+
 }
 </style>
 </head>
@@ -458,41 +521,94 @@ button{
 
 <div class="app">
 
-<!-- HEADER -->
+<!-- ================= HEADER ================= -->
+
 <div class="header">
+
   <h1>💰 Quản lý chi tiêu</h1>
-  <div class="date" id="todayDate"></div>
+
+  <div
+    class="date"
+    id="todayDate"
+  ></div>
+
 </div>
 
-<!-- SUMMARY -->
+<!-- ================= SUMMARY ================= -->
+
 <div class="summary">
 
   <div class="card">
-    <div class="card-title">📅 Hôm nay</div>
-    <div class="card-value" id="todayTotal">0đ</div>
+
+    <div class="card-title">
+      📅 Hôm nay
+    </div>
+
+    <div
+      class="card-value"
+      id="todayTotal"
+    >
+      0đ
+    </div>
+
   </div>
 
   <div class="card">
-    <div class="card-title">📆 Tháng này</div>
-    <div class="card-value" id="monthTotal">0đ</div>
+
+    <div class="card-title">
+      📆 Tháng này
+    </div>
+
+    <div
+      class="card-value"
+      id="monthTotal"
+    >
+      0đ
+    </div>
+
   </div>
 
   <div class="card">
-    <div class="card-title">🗓️ Năm nay</div>
-    <div class="card-value" id="yearTotal">0đ</div>
+
+    <div class="card-title">
+      🗓️ Năm nay
+    </div>
+
+    <div
+      class="card-value"
+      id="yearTotal"
+    >
+      0đ
+    </div>
+
   </div>
 
   <div class="card">
-    <div class="card-title">🎯 Ngân sách</div>
-    <div class="card-value" id="budgetTotal">Chưa đặt</div>
-    <div class="card-title" id="budgetPercent">
+
+    <div class="card-title">
+      🎯 Ngân sách
+    </div>
+
+    <div
+      class="card-value"
+      id="budgetTotal"
+    >
+      Chưa đặt
+    </div>
+
+    <div
+      class="card-title"
+      id="budgetPercent"
+    >
       💡 Hãy đặt ngân sách tháng
     </div>
+
   </div>
 
 </div>
 
-<!-- ADD -->
+<!-- ================= ADD ================= -->
+
 <div class="add-box">
 
   <div class="section-title">
@@ -516,7 +632,11 @@ button{
 </div>
 
 <!-- ================= TỔNG QUAN ================= -->
-<div id="overviewTab" class="tab-content active">
+
+<div
+  id="overviewTab"
+  class="tab-content active"
+>
 
   <div class="section">
 
@@ -549,6 +669,7 @@ button{
     <div class="compare-box">
 
       <div class="compare-item">
+
         <div class="compare-label">
           📆 Tháng này
         </div>
@@ -559,9 +680,11 @@ button{
         >
           0đ
         </div>
+
       </div>
 
       <div class="compare-item">
+
         <div class="compare-label">
           📆 Tháng trước
         </div>
@@ -572,6 +695,7 @@ button{
         >
           0đ
         </div>
+
       </div>
 
     </div>
@@ -586,9 +710,14 @@ button{
 </div>
 
 <!-- ================= LỊCH SỬ ================= -->
-<div id="historyTab" class="tab-content">
+
+<div
+  id="historyTab"
+  class="tab-content"
+>
 
   <!-- SEARCH -->
+
   <div class="section">
 
     <div class="section-title">
@@ -599,12 +728,13 @@ button{
       id="searchInput"
       type="text"
       placeholder="Tìm ăn sáng, xăng, cà phê..."
-      oninput="renderHistory()"
+      oninput="resetHistoryPageAndRender()"
     >
 
   </div>
 
   <!-- ADD BY DATE -->
+
   <div class="section">
 
     <div class="section-title">
@@ -613,15 +743,21 @@ button{
 
     <div class="quick-dates">
 
-      <button onclick="setHistoryDate(0)">
+      <button
+        onclick="setHistoryDate(0)"
+      >
         📅 Hôm nay
       </button>
 
-      <button onclick="setHistoryDate(-1)">
+      <button
+        onclick="setHistoryDate(-1)"
+      >
         ⏪ Hôm qua
       </button>
 
-      <button onclick="setHistoryDate(-2)">
+      <button
+        onclick="setHistoryDate(-2)"
+      >
         📆 2 ngày trước
       </button>
 
@@ -630,7 +766,6 @@ button{
     <input
       type="date"
       id="historyDate"
-      onchange="renderHistory()"
     >
 
     <div class="history-add">
@@ -641,7 +776,9 @@ button{
         placeholder="Ví dụ: 50k ăn sáng"
       >
 
-      <button onclick="addHistoryExpense()">
+      <button
+        onclick="addHistoryExpense()"
+      >
         ➕ Thêm vào ngày đã chọn
       </button>
 
@@ -650,6 +787,7 @@ button{
   </div>
 
   <!-- TOP -->
+
   <div class="section">
 
     <div class="section-title">
@@ -659,6 +797,7 @@ button{
     <div class="top-controls">
 
       <div>
+
         <label class="top-label">
           🔢 Hiển thị
         </label>
@@ -667,12 +806,21 @@ button{
           id="topCount"
           onchange="renderHistoryTopExpenses()"
         >
-          <option value="5">Top 5</option>
-          <option value="10">Top 10</option>
+
+          <option value="5">
+            Top 5
+          </option>
+
+          <option value="10">
+            Top 10
+          </option>
+
         </select>
+
       </div>
 
       <div>
+
         <label class="top-label">
           📅 Chọn tháng
         </label>
@@ -681,6 +829,7 @@ button{
           id="topMonth"
           onchange="renderHistoryTopExpenses()"
         ></select>
+
       </div>
 
     </div>
@@ -695,6 +844,7 @@ button{
   </div>
 
   <!-- HISTORY -->
+
   <div class="section">
 
     <div class="section-title">
@@ -703,12 +853,28 @@ button{
 
     <div id="historyList"></div>
 
+    <!-- PHÂN TRANG -->
+
+    <div
+      id="historyPagination"
+      class="history-pagination"
+    ></div>
+
+    <div
+      id="historyPageCount"
+      class="page-count"
+    ></div>
+
   </div>
 
 </div>
 
 <!-- ================= CÀI ĐẶT ================= -->
-<div id="settingsTab" class="tab-content">
+
+<div
+  id="settingsTab"
+  class="tab-content"
+>
 
   <div class="section">
 
@@ -824,7 +990,8 @@ button{
 
 </div>
 
-<!-- NAV -->
+<!-- ================= NAV ================= -->
+
 <div class="bottom-nav">
 
   <button
@@ -854,22 +1021,44 @@ button{
 
 <script>
 
-/* ================= STORAGE ================= */
+/* =====================================================
+   STORAGE
+===================================================== */
 
 const STORAGE_KEY = "chi_tieu_v1";
 const BUDGET_KEY = "chi_tieu_budget";
 
+/* =====================================================
+   HISTORY PAGINATION
+===================================================== */
+
+const HISTORY_PER_PAGE = 10;
+
+let historyPage = 1;
+
+
+/* =====================================================
+   STORAGE FUNCTIONS
+===================================================== */
+
 function getExpenses(){
 
   try{
+
     return JSON.parse(
-      localStorage.getItem(STORAGE_KEY) || "[]"
+      localStorage.getItem(
+        STORAGE_KEY
+      ) || "[]"
     );
+
   }catch{
+
     return [];
+
   }
 
 }
+
 
 function saveExpenses(data){
 
@@ -880,39 +1069,53 @@ function saveExpenses(data){
 
 }
 
-/* ================= DATE ================= */
 
-function localDateString(date=new Date()){
+/* =====================================================
+   DATE
+===================================================== */
 
-  const year=date.getFullYear();
+function localDateString(
+  date=new Date()
+){
 
-  const month=String(
-    date.getMonth()+1
-  ).padStart(2,"0");
+  const year=
+    date.getFullYear();
 
-  const day=String(
-    date.getDate()
-  ).padStart(2,"0");
+  const month=
+    String(
+      date.getMonth()+1
+    ).padStart(2,"0");
+
+  const day=
+    String(
+      date.getDate()
+    ).padStart(2,"0");
 
   return `${year}-${month}-${day}`;
 
 }
 
-function formatDateDisplay(dateString){
+
+function formatDateDisplay(
+  dateString
+){
 
   if(!dateString) return "";
 
-  const p=dateString.split("-");
+  const p=
+    dateString.split("-");
 
   return `${p[2]}/${p[1]}/${p[0]}`;
 
 }
 
+
 function expenseDate(item){
 
   if(item.dateOnly){
 
-    const p=item.dateOnly.split("-");
+    const p=
+      item.dateOnly.split("-");
 
     return new Date(
       Number(p[0]),
@@ -929,67 +1132,100 @@ function expenseDate(item){
 
 }
 
+
 function monthKey(date){
 
   return (
     date.getFullYear() +
     "-" +
-    String(date.getMonth()+1).padStart(2,"0")
+    String(
+      date.getMonth()+1
+    ).padStart(2,"0")
   );
 
 }
 
+
 function monthLabel(key){
 
-  const p=key.split("-");
+  const p=
+    key.split("-");
 
-  return `📆 Tháng ${p[1]}/${p[0]}`;
+  return (
+    `📆 Tháng ${p[1]}/${p[0]}`
+  );
 
 }
 
-/* ================= MONEY ================= */
+
+/* =====================================================
+   MONEY
+===================================================== */
 
 function formatMoney(number){
 
   return (
-    new Intl.NumberFormat("vi-VN")
-      .format(number || 0) +
+    new Intl.NumberFormat(
+      "vi-VN"
+    ).format(number || 0) +
     "đ"
   );
 
 }
 
-/* ================= PARSER ================= */
+
+/* =====================================================
+   PARSER
+===================================================== */
 
 function parseAmount(text){
 
-  const t=text
-    .toLowerCase()
-    .replace(/\s+/g," ")
-    .trim();
+  const t=
+    text
+      .toLowerCase()
+      .replace(/\s+/g," ")
+      .trim();
 
   /*
-    15tr5 = 15.5 triệu
-    15tr5 = 15.500.000
+    Ví dụ:
+
+    15tr5
+    = 15.500.000
+
+    2tr5
+    = 2.500.000
+
+    500k
+    = 500.000
+
+    50k
+    = 50.000
   */
 
-  let match=t.match(
-    /(\d+(?:[.,]\d+)?)\s*(tr|triệu)(\d+)?/i
-  );
+  let match=
+    t.match(
+      /(\d+(?:[.,]\d+)?)\s*(tr|triệu)(\d+)?/i
+    );
 
   if(match){
 
-    let number=Number(
-      match[1].replace(",",".")
-    );
+    let number=
+      Number(
+        match[1]
+          .replace(",",".")
+      );
 
     if(match[3]){
 
-      const extra=Number(match[3]);
+      const extra=
+        Number(match[3]);
 
       number +=
         extra /
-        Math.pow(10,match[3].length);
+        Math.pow(
+          10,
+          match[3].length
+        );
 
     }
 
@@ -999,63 +1235,88 @@ function parseAmount(text){
 
   }
 
-  match=t.match(
-    /(\d+(?:[.,]\d+)?)\s*(k|nghìn|ngàn)\b/i
-  );
+
+  match=
+    t.match(
+      /(\d+(?:[.,]\d+)?)\s*(k|nghìn|ngàn)\b/i
+    );
 
   if(match){
 
     return Math.round(
-      Number(match[1].replace(",",".")) *
-      1000
+      Number(
+        match[1]
+          .replace(",",".")
+      ) * 1000
     );
 
   }
 
-  match=t.match(
-    /(\d+(?:[.,]\d+)?)\s*đ\b/i
-  );
+
+  match=
+    t.match(
+      /(\d+(?:[.,]\d+)?)\s*đ\b/i
+    );
 
   if(match){
 
     return Math.round(
-      Number(match[1].replace(",","."))
+      Number(
+        match[1]
+          .replace(",",".")
+      )
     );
 
   }
 
-  match=t.match(
-    /(\d{1,3}(?:[.,]\d{3})+)/
-  );
+
+  match=
+    t.match(
+      /(\d{1,3}(?:[.,]\d{3})+)/
+    );
 
   if(match){
 
     return Number(
-      match[1].replace(/[.,]/g,"")
+      match[1]
+        .replace(/[.,]/g,"")
     );
 
   }
 
-  match=t.match(
-    /(\d+(?:[.,]\d+)?)/
-  );
+
+  match=
+    t.match(
+      /(\d+(?:[.,]\d+)?)/
+    );
 
   if(!match) return 0;
 
   return Math.round(
-    Number(match[1].replace(",","."))
+    Number(
+      match[1]
+        .replace(",",".")
+    )
   );
 
 }
 
-/* ================= CATEGORY ================= */
+
+/* =====================================================
+   CATEGORY
+===================================================== */
 
 function getCategory(text){
 
-  const t=text
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g,"");
+  const t=
+    text
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(
+        /[\u0300-\u036f]/g,
+        ""
+      );
+
 
   if(
     /xang|do xang|dau xe|nhien lieu|petrol|grab|taxi|gojek|be\b|xe om|ship|giao hang|gui xe|bai xe|parking|cau duong|sua xe|bao duong xe|rua xe|oto|o to|xe may|xe buyt|bus/.test(t)
@@ -1065,6 +1326,7 @@ function getCategory(text){
 
   }
 
+
   if(
     /an sang|an trua|an toi|an vat|com|pho|bun|mi|my|chao|banh mi|do an|thuc an|ca phe|cafe|coffee|tra sua|nuoc uong|bia|quan an|nha hang|do uong/.test(t)
   ){
@@ -1072,6 +1334,7 @@ function getCategory(text){
     return "🍜 Ăn uống";
 
   }
+
 
   if(
     /mua sam|quan ao|ao\b|quan\b|giay|dep|tui|balo|my pham|son|dau goi|sua rua mat|sieu thi|hang hoa|do dung|dien thoai|phu kien/.test(t)
@@ -1081,6 +1344,7 @@ function getCategory(text){
 
   }
 
+
   if(
     /game|lien minh|lol|steam|netflix|youtube|phim|rap|karaoke|giai tri|spotify|nhac/.test(t)
   ){
@@ -1089,28 +1353,39 @@ function getCategory(text){
 
   }
 
+
   return "📦 Khác";
 
 }
 
-/* ================= ADD ================= */
+
+/* =====================================================
+   ADD TODAY
+===================================================== */
 
 function addTodayExpense(){
 
   const input=
-    document.getElementById("expenseInput");
+    document.getElementById(
+      "expenseInput"
+    );
 
-  const text=input.value.trim();
+  const text=
+    input.value.trim();
 
   if(!text){
 
-    showToast("⚠️ Nhập khoản chi trước");
+    showToast(
+      "⚠️ Nhập khoản chi trước"
+    );
 
     return;
 
   }
 
-  const amount=parseAmount(text);
+
+  const amount=
+    parseAmount(text);
 
   if(amount<=0){
 
@@ -1122,25 +1397,34 @@ function addTodayExpense(){
 
   }
 
-  const dateOnly=localDateString();
+
+  const dateOnly=
+    localDateString();
+
 
   const expense={
 
-    id:Date.now()+Math.random(),
+    id:
+      Date.now() +
+      Math.random(),
 
     text,
 
     amount,
 
-    category:getCategory(text),
+    category:
+      getCategory(text),
 
-    date:new Date().toISOString(),
+    date:
+      new Date().toISOString(),
 
     dateOnly
 
   };
 
-  const expenses=getExpenses();
+
+  const expenses=
+    getExpenses();
 
   expenses.push(expense);
 
@@ -1148,7 +1432,11 @@ function addTodayExpense(){
 
   input.value="";
 
+  historyPage=1;
+
   renderAll();
+
+  renderHistory();
 
   showToast(
     "✅ Đã thêm " +
@@ -1157,102 +1445,158 @@ function addTodayExpense(){
 
 }
 
-/* ================= SUMMARY ================= */
+
+/* =====================================================
+   SUMMARY
+===================================================== */
 
 function renderSummary(){
 
-  const expenses=getExpenses();
+  const expenses=
+    getExpenses();
 
-  const today=localDateString();
+  const today=
+    localDateString();
 
-  const now=new Date();
+  const now=
+    new Date();
 
-  const currentMonth=monthKey(now);
+  const currentMonth=
+    monthKey(now);
 
-  const currentYear=now.getFullYear();
+  const currentYear=
+    now.getFullYear();
+
 
   let todayTotal=0;
   let monthTotal=0;
   let yearTotal=0;
 
+
   expenses.forEach(item=>{
 
-    const d=expenseDate(item);
+    const d=
+      expenseDate(item);
 
     const dateOnly=
       item.dateOnly ||
       localDateString(d);
 
+
     if(dateOnly===today){
 
-      todayTotal+=Number(item.amount);
+      todayTotal +=
+        Number(item.amount);
 
     }
 
-    if(monthKey(d)===currentMonth){
 
-      monthTotal+=Number(item.amount);
+    if(
+      monthKey(d)===
+      currentMonth
+    ){
+
+      monthTotal +=
+        Number(item.amount);
 
     }
 
-    if(d.getFullYear()===currentYear){
 
-      yearTotal+=Number(item.amount);
+    if(
+      d.getFullYear()===
+      currentYear
+    ){
+
+      yearTotal +=
+        Number(item.amount);
 
     }
 
   });
 
+
   document.getElementById(
     "todayTotal"
-  ).textContent=formatMoney(todayTotal);
+  ).textContent=
+    formatMoney(todayTotal);
+
 
   document.getElementById(
     "monthTotal"
-  ).textContent=formatMoney(monthTotal);
+  ).textContent=
+    formatMoney(monthTotal);
+
 
   document.getElementById(
     "yearTotal"
-  ).textContent=formatMoney(yearTotal);
+  ).textContent=
+    formatMoney(yearTotal);
 
-  renderBudget(monthTotal);
+
+  renderBudget(
+    monthTotal
+  );
 
 }
 
-/* ================= BUDGET ================= */
 
-function renderBudget(monthTotal){
+/* =====================================================
+   BUDGET
+===================================================== */
 
-  const budget=Number(
-    localStorage.getItem(BUDGET_KEY)||0
-  );
+function renderBudget(
+  monthTotal
+){
+
+  const budget=
+    Number(
+      localStorage.getItem(
+        BUDGET_KEY
+      ) || 0
+    );
+
 
   const total=
-    document.getElementById("budgetTotal");
+    document.getElementById(
+      "budgetTotal"
+    );
 
   const percent=
-    document.getElementById("budgetPercent");
+    document.getElementById(
+      "budgetPercent"
+    );
+
 
   if(budget>0){
 
-    const used=Math.round(
-      monthTotal/budget*100
-    );
+    const used=
+      Math.round(
+        monthTotal /
+        budget *
+        100
+      );
 
-    const remaining=Math.max(
-      0,
-      100-used
-    );
+
+    const remaining=
+      Math.max(
+        0,
+        100-used
+      );
+
 
     total.textContent=
       formatMoney(budget);
 
+
     if(monthTotal>budget){
 
-      const over=Math.round(
-        (monthTotal-budget)/
-        budget*100
-      );
+      const over=
+        Math.round(
+          (monthTotal-budget) /
+          budget *
+          100
+        );
+
 
       percent.textContent=
         "⚠️ Đã vượt " +
@@ -1273,7 +1617,8 @@ function renderBudget(monthTotal){
 
   }else{
 
-    total.textContent="Chưa đặt";
+    total.textContent=
+      "Chưa đặt";
 
     percent.textContent=
       "💡 Hãy đặt ngân sách tháng";
@@ -1282,27 +1627,38 @@ function renderBudget(monthTotal){
 
 }
 
-/* ================= MONTH LIST ================= */
+
+/* =====================================================
+   MONTH LIST
+===================================================== */
 
 function getAvailableMonths(){
 
-  const months=new Set();
+  const months=
+    new Set();
 
   months.add(
     monthKey(new Date())
   );
 
+
   getExpenses().forEach(item=>{
 
     months.add(
-      monthKey(expenseDate(item))
+      monthKey(
+        expenseDate(item)
+      )
     );
 
   });
 
-  return [...months].sort().reverse();
+
+  return [
+    ...months
+  ].sort().reverse();
 
 }
+
 
 function fillMonthSelect(id){
 
@@ -1311,29 +1667,41 @@ function fillMonthSelect(id){
 
   if(!select) return;
 
-  const old=select.value;
 
-  const months=getAvailableMonths();
+  const old=
+    select.value;
+
+  const months=
+    getAvailableMonths();
+
 
   select.innerHTML="";
+
 
   months.forEach(key=>{
 
     const option=
-      document.createElement("option");
+      document.createElement(
+        "option"
+      );
 
-    option.value=key;
+    option.value=
+      key;
 
     option.textContent=
       monthLabel(key);
 
-    select.appendChild(option);
+    select.appendChild(
+      option
+    );
 
   });
 
+
   if(months.includes(old)){
 
-    select.value=old;
+    select.value=
+      old;
 
   }else{
 
@@ -1343,6 +1711,7 @@ function fillMonthSelect(id){
   }
 
 }
+
 
 function populateMonthSelect(){
 
@@ -1356,14 +1725,24 @@ function populateMonthSelect(){
 
 }
 
-/* ================= CATEGORY CHART ================= */
+
+/* =====================================================
+   CATEGORY CHART
+===================================================== */
 
 function renderCategoryChart(){
 
-  const selected=
+  const select=
     document.getElementById(
       "categoryMonth"
-    ).value;
+    );
+
+  if(!select) return;
+
+
+  const selected=
+    select.value;
+
 
   const categories=[
 
@@ -1375,24 +1754,32 @@ function renderCategoryChart(){
 
   ];
 
+
   const totals={};
 
+
   categories.forEach(
-    c=>totals[c]=0
+    c=>{
+      totals[c]=0;
+    }
   );
+
 
   getExpenses().forEach(item=>{
 
     if(
-      monthKey(expenseDate(item))===
+      monthKey(
+        expenseDate(item)
+      )===
       selected
     ){
 
       if(
-        totals[item.category]!==undefined
+        totals[item.category] !==
+        undefined
       ){
 
-        totals[item.category]+=
+        totals[item.category] +=
           Number(item.amount);
 
       }
@@ -1401,15 +1788,19 @@ function renderCategoryChart(){
 
   });
 
-  const max=Math.max(
-    ...Object.values(totals),
-    0
-  );
+
+  const max=
+    Math.max(
+      ...Object.values(totals),
+      0
+    );
+
 
   const container=
     document.getElementById(
       "categoryChart"
     );
+
 
   if(max===0){
 
@@ -1422,48 +1813,59 @@ function renderCategoryChart(){
 
   }
 
+
   container.innerHTML=
-    categories.map(category=>{
+    categories.map(
+      category=>{
 
-      const value=totals[category];
+        const value=
+          totals[category];
 
-      const width=Math.max(
-        value/max*100,
-        2
-      );
+        const width=
+          Math.max(
+            value/max*100,
+            2
+          );
 
-      return `
 
-        <div class="category-item">
+        return `
 
-          <div class="category-head">
+          <div class="category-item">
 
-            <span>${category}</span>
+            <div class="category-head">
 
-            <strong>
-              ${formatMoney(value)}
-            </strong>
+              <span>
+                ${category}
+              </span>
+
+              <strong>
+                ${formatMoney(value)}
+              </strong>
+
+            </div>
+
+            <div class="bar-bg">
+
+              <div
+                class="bar"
+                style="width:${width}%"
+              ></div>
+
+            </div>
 
           </div>
 
-          <div class="bar-bg">
+        `;
 
-            <div
-              class="bar"
-              style="width:${width}%"
-            ></div>
-
-          </div>
-
-        </div>
-
-      `;
-
-    }).join("");
+      }
+    ).join("");
 
 }
 
-/* ================= COMPARISON ================= */
+
+/* =====================================================
+   COMPARISON
+===================================================== */
 
 function getMonthTotal(key){
 
@@ -1471,12 +1873,16 @@ function getMonthTotal(key){
     (sum,item)=>{
 
       if(
-        monthKey(expenseDate(item))===
+        monthKey(
+          expenseDate(item)
+        )===
         key
       ){
 
-        return sum+
-          Number(item.amount);
+        return (
+          sum +
+          Number(item.amount)
+        );
 
       }
 
@@ -1488,12 +1894,16 @@ function getMonthTotal(key){
 
 }
 
+
 function renderComparison(){
 
-  const now=new Date();
+  const now=
+    new Date();
+
 
   const currentKey=
     monthKey(now);
+
 
   const previousKey=
     monthKey(
@@ -1504,26 +1914,35 @@ function renderComparison(){
       )
     );
 
+
   const current=
-    getMonthTotal(currentKey);
+    getMonthTotal(
+      currentKey
+    );
 
   const previous=
-    getMonthTotal(previousKey);
+    getMonthTotal(
+      previousKey
+    );
+
 
   document.getElementById(
     "compareCurrent"
   ).textContent=
     formatMoney(current);
 
+
   document.getElementById(
     "comparePrevious"
   ).textContent=
     formatMoney(previous);
 
+
   const text=
     document.getElementById(
       "compareText"
     );
+
 
   if(
     current===0 &&
@@ -1537,6 +1956,7 @@ function renderComparison(){
 
   }
 
+
   if(previous===0){
 
     text.textContent=
@@ -1547,35 +1967,52 @@ function renderComparison(){
 
   }
 
+
   if(current>previous){
 
-    const percent=Math.round(
-      (current-previous)/
-      previous*100
-    );
+    const percent=
+      Math.round(
+        (current-previous) /
+        previous *
+        100
+      );
+
 
     text.textContent=
       "📈 Chi tiêu tăng " +
       percent +
       "% (" +
-      formatMoney(current-previous) +
+      formatMoney(
+        current-previous
+      ) +
       ") so với tháng trước.";
 
-  }else if(current<previous){
+  }
 
-    const percent=Math.round(
-      (previous-current)/
-      previous*100
-    );
+
+  else if(current<previous){
+
+    const percent=
+      Math.round(
+        (previous-current) /
+        previous *
+        100
+      );
+
 
     text.textContent=
       "📉 Chi tiêu giảm " +
       percent +
       "% (" +
-      formatMoney(previous-current) +
+      formatMoney(
+        previous-current
+      ) +
       ") so với tháng trước.";
 
-  }else{
+  }
+
+
+  else{
 
     text.textContent=
       "➡️ Chi tiêu bằng tháng trước.";
@@ -1584,30 +2021,38 @@ function renderComparison(){
 
 }
 
-/* ================= TOP EXPENSE ================= */
+
+/* =====================================================
+   TOP EXPENSE
+===================================================== */
 
 function renderHistoryTopExpenses(){
 
-  const count=Number(
-    document.getElementById(
-      "topCount"
-    ).value || 5
-  );
+  const count=
+    Number(
+      document.getElementById(
+        "topCount"
+      ).value || 5
+    );
+
 
   const selectedMonth=
     document.getElementById(
       "topMonth"
     ).value;
 
+
   const container=
     document.getElementById(
       "historyTopExpenses"
     );
 
+
   const note=
     document.getElementById(
       "topNote"
     );
+
 
   if(!selectedMonth){
 
@@ -1616,29 +2061,41 @@ function renderHistoryTopExpenses(){
       '📭 Chưa có tháng để xem' +
       '</div>';
 
+    note.textContent="";
+
     return;
 
   }
 
+
   const list=
     getExpenses()
-      .filter(item=>
-        monthKey(
-          expenseDate(item)
-        )===selectedMonth
+      .filter(
+        item=>
+          monthKey(
+            expenseDate(item)
+          )===
+          selectedMonth
       )
       .sort(
         (a,b)=>
-          Number(b.amount)-
+          Number(b.amount) -
           Number(a.amount)
       )
-      .slice(0,count);
+      .slice(
+        0,
+        count
+      );
+
 
   note.textContent=
-    monthLabel(selectedMonth) +
+    monthLabel(
+      selectedMonth
+    ) +
     " · " +
     list.length +
     " khoản lớn nhất";
+
 
   if(list.length===0){
 
@@ -1651,6 +2108,7 @@ function renderHistoryTopExpenses(){
 
   }
 
+
   container.innerHTML=
     list.map(
       (item,index)=>{
@@ -1658,16 +2116,40 @@ function renderHistoryTopExpenses(){
         const d=
           expenseDate(item);
 
+
         const dateOnly=
           item.dateOnly ||
           localDateString(d);
 
+
         let rank="";
 
-        if(index===0) rank="🥇";
-        else if(index===1) rank="🥈";
-        else if(index===2) rank="🥉";
-        else rank=String(index+1);
+
+        if(index===0){
+
+          rank="🥇";
+
+        }
+
+        else if(index===1){
+
+          rank="🥈";
+
+        }
+
+        else if(index===2){
+
+          rank="🥉";
+
+        }
+
+        else{
+
+          rank=
+            String(index+1);
+
+        }
+
 
         return `
 
@@ -1682,13 +2164,17 @@ function renderHistoryTopExpenses(){
               <div class="expense-left">
 
                 <div class="expense-text">
-                  ${escapeHtml(item.text)}
+                  ${escapeHtml(
+                    item.text
+                  )}
                 </div>
 
                 <div class="expense-meta">
                   ${item.category}
                   · 📅
-                  ${formatDateDisplay(dateOnly)}
+                  ${formatDateDisplay(
+                    dateOnly
+                  )}
                 </div>
 
               </div>
@@ -1696,7 +2182,9 @@ function renderHistoryTopExpenses(){
             </div>
 
             <div class="expense-money">
-              ${formatMoney(item.amount)}
+              ${formatMoney(
+                item.amount
+              )}
             </div>
 
           </div>
@@ -1708,24 +2196,36 @@ function renderHistoryTopExpenses(){
 
 }
 
-/* ================= HISTORY ================= */
+
+/* =====================================================
+   HISTORY DATE
+===================================================== */
 
 function setHistoryDate(offset){
 
-  const date=new Date();
+  const date=
+    new Date();
+
 
   date.setDate(
     date.getDate()+offset
   );
+
 
   document.getElementById(
     "historyDate"
   ).value=
     localDateString(date);
 
-  renderHistory();
+
+  resetHistoryPageAndRender();
 
 }
+
+
+/* =====================================================
+   ADD HISTORY EXPENSE
+===================================================== */
 
 function addHistoryExpense(){
 
@@ -1734,12 +2234,16 @@ function addHistoryExpense(){
       "historyInput"
     );
 
-  const text=input.value.trim();
+
+  const text=
+    input.value.trim();
+
 
   const selectedDate=
     document.getElementById(
       "historyDate"
     ).value;
+
 
   if(!selectedDate){
 
@@ -1751,6 +2255,7 @@ function addHistoryExpense(){
 
   }
 
+
   if(!text){
 
     showToast(
@@ -1761,8 +2266,10 @@ function addHistoryExpense(){
 
   }
 
+
   const amount=
     parseAmount(text);
+
 
   if(amount<=0){
 
@@ -1774,84 +2281,163 @@ function addHistoryExpense(){
 
   }
 
+
   const expense={
 
-    id:Date.now()+Math.random(),
+    id:
+      Date.now() +
+      Math.random(),
 
     text,
 
     amount,
 
-    category:getCategory(text),
+    category:
+      getCategory(text),
 
-    date:new Date(
-      selectedDate+"T12:00:00"
-    ).toISOString(),
+    date:
+      new Date(
+        selectedDate +
+        "T12:00:00"
+      ).toISOString(),
 
-    dateOnly:selectedDate
+    dateOnly:
+      selectedDate
 
   };
 
-  const expenses=getExpenses();
+
+  const expenses=
+    getExpenses();
 
   expenses.push(expense);
 
   saveExpenses(expenses);
 
+
   input.value="";
+
+  historyPage=1;
+
 
   renderAll();
 
   renderHistory();
 
+
   showToast(
     "✅ Đã thêm " +
     formatMoney(amount) +
     " ngày " +
-    formatDateDisplay(selectedDate)
+    formatDateDisplay(
+      selectedDate
+    )
   );
 
 }
 
+
+/* =====================================================
+   HISTORY
+   10 ITEMS PER PAGE
+===================================================== */
+
 function renderHistory(){
 
-  const search=(
-    document.getElementById(
-      "searchInput"
-    )?.value || ""
-  )
-  .toLowerCase()
-  .trim();
+  const search=
+    (
+      document.getElementById(
+        "searchInput"
+      )?.value || ""
+    )
+      .toLowerCase()
+      .trim();
+
 
   const expenses=
     getExpenses()
       .sort(
         (a,b)=>
-          expenseDate(b)-
+          expenseDate(b) -
           expenseDate(a)
       );
+
 
   const filtered=
     expenses.filter(item=>{
 
       return (
+
         !search ||
-        String(item.text)
+
+        String(
+          item.text
+        )
           .toLowerCase()
           .includes(search) ||
-        String(item.category)
+
+        String(
+          item.category
+        )
           .toLowerCase()
           .includes(search) ||
-        formatMoney(item.amount)
+
+        formatMoney(
+          item.amount
+        )
           .includes(search)
+
       );
 
     });
+
 
   const container=
     document.getElementById(
       "historyList"
     );
+
+
+  /*
+    TÍNH TỔNG SỐ TRANG
+  */
+
+  const totalPages=
+    Math.max(
+      1,
+      Math.ceil(
+        filtered.length /
+        HISTORY_PER_PAGE
+      )
+    );
+
+
+  /*
+    Nếu trang hiện tại
+    vượt quá tổng số trang
+  */
+
+  if(
+    historyPage >
+    totalPages
+  ){
+
+    historyPage=
+      totalPages;
+
+  }
+
+
+  if(historyPage<1){
+
+    historyPage=1;
+
+  }
+
+
+  /*
+    Không có dữ liệu
+  */
 
   if(filtered.length===0){
 
@@ -1860,75 +2446,292 @@ function renderHistory(){
       '📭 Không tìm thấy khoản chi' +
       '</div>';
 
+
+    renderHistoryPagination(
+      0,
+      1
+    );
+
     return;
 
   }
 
+
+  /*
+    CẮT 10 DÒNG
+  */
+
+  const start=
+    (
+      historyPage-1
+    ) *
+    HISTORY_PER_PAGE;
+
+
+  const end=
+    start +
+    HISTORY_PER_PAGE;
+
+
+  const pageItems=
+    filtered.slice(
+      start,
+      end
+    );
+
+
+  /*
+    HIỂN THỊ
+  */
+
   container.innerHTML=
-    filtered.map(item=>{
+    pageItems.map(
+      item=>{
 
-      const d=
-        expenseDate(item);
+        const d=
+          expenseDate(item);
 
-      const dateOnly=
-        item.dateOnly ||
-        localDateString(d);
 
-      const time=
-        item.date
-          ? new Date(item.date)
-              .toLocaleTimeString(
+        const dateOnly=
+          item.dateOnly ||
+          localDateString(d);
+
+
+        const time=
+          item.date
+            ? new Date(
+                item.date
+              ).toLocaleTimeString(
                 "vi-VN",
                 {
                   hour:"2-digit",
                   minute:"2-digit"
                 }
               )
-          : "";
+            : "";
 
-      return `
 
-        <div class="expense-row">
+        return `
 
-          <div class="expense-left">
+          <div class="expense-row">
 
-            <div class="expense-text">
-              ${escapeHtml(item.text)}
+            <div class="expense-left">
+
+              <div class="expense-text">
+                ${escapeHtml(
+                  item.text
+                )}
+              </div>
+
+              <div class="expense-meta">
+
+                ${item.category}
+
+                · 📅
+
+                ${formatDateDisplay(
+                  dateOnly
+                )}
+
+                ${
+                  time
+                    ? " · 🕐 " + time
+                    : ""
+                }
+
+              </div>
+
             </div>
 
-            <div class="expense-meta">
-              ${item.category}
-              · 📅
-              ${formatDateDisplay(dateOnly)}
-              ${time ? " · 🕐 "+time : ""}
-            </div>
-
-          </div>
-
-          <div style="text-align:right">
-
-            <div class="expense-money">
-              ${formatMoney(item.amount)}
-            </div>
-
-            <button
-              class="delete-btn"
-              onclick="deleteExpense(${item.id})"
+            <div
+              style="text-align:right"
             >
-              🗑️
-            </button>
+
+              <div class="expense-money">
+                ${formatMoney(
+                  item.amount
+                )}
+              </div>
+
+              <button
+                class="delete-btn"
+                onclick="deleteExpense(${item.id})"
+              >
+                🗑️
+              </button>
+
+            </div>
 
           </div>
 
-        </div>
+        `;
 
-      `;
+      }
+    ).join("");
 
-    }).join("");
+
+  /*
+    PHÂN TRANG
+  */
+
+  renderHistoryPagination(
+    filtered.length,
+    totalPages
+  );
 
 }
 
-/* ================= DELETE ================= */
+
+/* =====================================================
+   HISTORY PAGINATION UI
+===================================================== */
+
+function renderHistoryPagination(
+  totalItems,
+  totalPages
+){
+
+  const pagination=
+    document.getElementById(
+      "historyPagination"
+    );
+
+
+  const pageCount=
+    document.getElementById(
+      "historyPageCount"
+    );
+
+
+  if(!pagination) return;
+
+
+  if(totalItems===0){
+
+    pagination.innerHTML="";
+
+    if(pageCount){
+
+      pageCount.textContent="";
+
+    }
+
+    return;
+
+  }
+
+
+  pagination.innerHTML=`
+
+    <button
+      class="page-btn"
+      onclick="changeHistoryPage(-1)"
+      ${
+        historyPage<=1
+          ? "disabled"
+          : ""
+      }
+    >
+      ◀ Trước
+    </button>
+
+
+    <div class="page-info">
+      Trang ${historyPage}
+      / ${totalPages}
+    </div>
+
+
+    <button
+      class="page-btn"
+      onclick="changeHistoryPage(1)"
+      ${
+        historyPage>=totalPages
+          ? "disabled"
+          : ""
+      }
+    >
+      Sau ▶
+    </button>
+
+  `;
+
+
+  if(pageCount){
+
+    const from=
+      (
+        historyPage-1
+      ) *
+      HISTORY_PER_PAGE +
+      1;
+
+
+    const to=
+      Math.min(
+        historyPage *
+        HISTORY_PER_PAGE,
+        totalItems
+      );
+
+
+    pageCount.textContent=
+      `Hiển thị ${from}–${to} / ${totalItems} khoản`;
+
+  }
+
+}
+
+
+/* =====================================================
+   CHANGE PAGE
+===================================================== */
+
+function changeHistoryPage(
+  direction
+){
+
+  historyPage +=
+    direction;
+
+
+  renderHistory();
+
+
+  const historyList=
+    document.getElementById(
+      "historyList"
+    );
+
+
+  if(historyList){
+
+    historyList.scrollIntoView({
+      behavior:"smooth",
+      block:"start"
+    });
+
+  }
+
+}
+
+
+/* =====================================================
+   RESET PAGE
+===================================================== */
+
+function resetHistoryPageAndRender(){
+
+  historyPage=1;
+
+  renderHistory();
+
+}
+
+
+/* =====================================================
+   DELETE
+===================================================== */
 
 function deleteExpense(id){
 
@@ -1942,29 +2745,71 @@ function deleteExpense(id){
 
   }
 
+
   saveExpenses(
     getExpenses().filter(
-      item=>item.id!==id
+      item =>
+        item.id !== id
     )
   );
+
+
+  /*
+    Nếu xóa dòng cuối
+    của trang hiện tại,
+    tự lùi về trang trước
+  */
+
+  const remaining=
+    getExpenses().length;
+
+
+  const maxPage=
+    Math.max(
+      1,
+      Math.ceil(
+        remaining /
+        HISTORY_PER_PAGE
+      )
+    );
+
+
+  if(
+    historyPage >
+    maxPage
+  ){
+
+    historyPage=
+      maxPage;
+
+  }
+
 
   renderAll();
 
   renderHistory();
 
-  showToast("🗑️ Đã xóa");
+
+  showToast(
+    "🗑️ Đã xóa"
+  );
 
 }
 
-/* ================= BUDGET ================= */
+
+/* =====================================================
+   BUDGET SAVE
+===================================================== */
 
 function saveBudget(){
 
-  const value=Number(
-    document.getElementById(
-      "budgetInput"
-    ).value
-  );
+  const value=
+    Number(
+      document.getElementById(
+        "budgetInput"
+      ).value
+    );
+
 
   if(value<=0){
 
@@ -1976,12 +2821,15 @@ function saveBudget(){
 
   }
 
+
   localStorage.setItem(
     BUDGET_KEY,
     value
   );
 
+
   renderSummary();
+
 
   showToast(
     "✅ Đã lưu ngân sách"
@@ -1989,13 +2837,17 @@ function saveBudget(){
 
 }
 
-/* ================= BACKUP ================= */
+
+/* =====================================================
+   BACKUP
+===================================================== */
 
 function backupData(){
 
   const data={
 
-    expenses:getExpenses(),
+    expenses:
+      getExpenses(),
 
     budget:
       localStorage.getItem(
@@ -2004,35 +2856,51 @@ function backupData(){
 
   };
 
-  const blob=new Blob(
-    [
-      JSON.stringify(
-        data,
-        null,
-        2
-      )
-    ],
-    {
-      type:"application/json"
-    }
-  );
+
+  const blob=
+    new Blob(
+      [
+        JSON.stringify(
+          data,
+          null,
+          2
+        )
+      ],
+      {
+        type:
+          "application/json"
+      }
+    );
+
 
   const url=
-    URL.createObjectURL(blob);
+    URL.createObjectURL(
+      blob
+    );
+
 
   const a=
-    document.createElement("a");
+    document.createElement(
+      "a"
+    );
+
 
   a.href=url;
+
 
   a.download=
     "chi-tieu-backup-" +
     localDateString() +
     ".json";
 
+
   a.click();
 
-  URL.revokeObjectURL(url);
+
+  URL.revokeObjectURL(
+    url
+  );
+
 
   showToast(
     "💾 Đã sao lưu dữ liệu"
@@ -2040,7 +2908,10 @@ function backupData(){
 
 }
 
-/* ================= RESTORE ================= */
+
+/* =====================================================
+   RESTORE
+===================================================== */
 
 function restoreData(){
 
@@ -2048,6 +2919,7 @@ function restoreData(){
     document.getElementById(
       "restoreFile"
     ).files[0];
+
 
   if(!file){
 
@@ -2059,69 +2931,86 @@ function restoreData(){
 
   }
 
+
   const reader=
     new FileReader();
 
-  reader.onload=function(e){
 
-    try{
+  reader.onload=
+    function(e){
 
-      const data=
-        JSON.parse(
-          e.target.result
-        );
+      try{
 
-      if(
-        !Array.isArray(
+        const data=
+          JSON.parse(
+            e.target.result
+          );
+
+
+        if(
+          !Array.isArray(
+            data.expenses
+          )
+        ){
+
+          throw new Error();
+
+        }
+
+
+        saveExpenses(
           data.expenses
-        )
-      ){
+        );
 
-        throw new Error();
 
-      }
+        if(data.budget){
 
-      saveExpenses(
-        data.expenses
-      );
+          localStorage.setItem(
+            BUDGET_KEY,
+            data.budget
+          );
 
-      if(data.budget){
+        }
 
-        localStorage.setItem(
-          BUDGET_KEY,
-          data.budget
+
+        historyPage=1;
+
+
+        renderAll();
+
+        renderHistory();
+
+
+        showToast(
+          "♻️ Khôi phục thành công"
+        );
+
+
+      }catch{
+
+        showToast(
+          "❌ File backup không hợp lệ"
         );
 
       }
 
-      renderAll();
+    };
 
-      renderHistory();
-
-      showToast(
-        "♻️ Khôi phục thành công"
-      );
-
-    }catch{
-
-      showToast(
-        "❌ File backup không hợp lệ"
-      );
-
-    }
-
-  };
 
   reader.readAsText(file);
 
 }
 
-/* ================= CSV ================= */
+
+/* =====================================================
+   CSV
+===================================================== */
 
 function exportCSV(){
 
   const expenses=
     getExpenses();
+
 
   if(expenses.length===0){
 
@@ -2133,63 +3022,95 @@ function exportCSV(){
 
   }
 
+
   let csv=
     "Ngày,Giờ,Nội dung,Loại,Số tiền\n";
+
 
   expenses.forEach(item=>{
 
     const d=
       expenseDate(item);
 
+
     const dateOnly=
       item.dateOnly ||
       localDateString(d);
 
+
     const time=
       item.date
-        ? new Date(item.date)
-            .toLocaleTimeString(
-              "vi-VN",
-              {
-                hour:"2-digit",
-                minute:"2-digit"
-              }
-            )
+        ? new Date(
+            item.date
+          ).toLocaleTimeString(
+            "vi-VN",
+            {
+              hour:"2-digit",
+              minute:"2-digit"
+            }
+          )
         : "";
 
+
     csv +=
-      `"${formatDateDisplay(dateOnly)}",` +
+      `"${formatDateDisplay(
+        dateOnly
+      )}",` +
+
       `"${time}",` +
-      `"${String(item.text)
-        .replace(/"/g,'""')}",` +
+
+      `"${String(
+        item.text
+      ).replace(
+        /"/g,
+        '""'
+      )}",` +
+
       `"${item.category}",` +
+
       `"${item.amount}"\n`;
 
   });
 
-  const blob=new Blob(
-    ["\uFEFF"+csv],
-    {
-      type:"text/csv;charset=utf-8;"
-    }
-  );
+
+  const blob=
+    new Blob(
+      ["\uFEFF"+csv],
+      {
+        type:
+          "text/csv;charset=utf-8;"
+      }
+    );
+
 
   const url=
-    URL.createObjectURL(blob);
+    URL.createObjectURL(
+      blob
+    );
+
 
   const a=
-    document.createElement("a");
+    document.createElement(
+      "a"
+    );
+
 
   a.href=url;
+
 
   a.download=
     "chi-tieu-" +
     localDateString() +
     ".csv";
 
+
   a.click();
 
-  URL.revokeObjectURL(url);
+
+  URL.revokeObjectURL(
+    url
+  );
+
 
   showToast(
     "📤 Đã xuất CSV"
@@ -2197,13 +3118,17 @@ function exportCSV(){
 
 }
 
-/* ================= DARK MODE ================= */
+
+/* =====================================================
+   DARK MODE
+===================================================== */
 
 function toggleDarkMode(){
 
   document.body.classList.toggle(
     "dark"
   );
+
 
   localStorage.setItem(
     "chi_tieu_dark",
@@ -2214,7 +3139,10 @@ function toggleDarkMode(){
 
 }
 
-/* ================= DELETE ALL ================= */
+
+/* =====================================================
+   DELETE ALL
+===================================================== */
 
 function deleteAllData(){
 
@@ -2228,13 +3156,19 @@ function deleteAllData(){
 
   }
 
+
   localStorage.removeItem(
     STORAGE_KEY
   );
 
+
+  historyPage=1;
+
+
   renderAll();
 
   renderHistory();
+
 
   showToast(
     "🗑️ Đã xóa toàn bộ dữ liệu"
@@ -2242,29 +3176,53 @@ function deleteAllData(){
 
 }
 
-/* ================= TABS ================= */
 
-function showTab(tab,button){
+/* =====================================================
+   TABS
+===================================================== */
+
+function showTab(
+  tab,
+  button
+){
 
   document
-    .querySelectorAll(".tab-content")
+    .querySelectorAll(
+      ".tab-content"
+    )
     .forEach(
-      el=>el.classList.remove("active")
+      el =>
+        el.classList.remove(
+          "active"
+        )
     );
 
+
   document
-    .querySelectorAll(".nav-btn")
+    .querySelectorAll(
+      ".nav-btn"
+    )
     .forEach(
-      el=>el.classList.remove("active")
+      el =>
+        el.classList.remove(
+          "active"
+        )
     );
+
 
   document
     .getElementById(
       tab+"Tab"
     )
-    .classList.add("active");
+    .classList.add(
+      "active"
+    );
 
-  button.classList.add("active");
+
+  button.classList.add(
+    "active"
+  );
+
 
   if(tab==="history"){
 
@@ -2273,6 +3231,7 @@ function showTab(tab,button){
         "historyDate"
       );
 
+
     if(!date.value){
 
       date.value=
@@ -2280,7 +3239,11 @@ function showTab(tab,button){
 
     }
 
-    fillMonthSelect("topMonth");
+
+    fillMonthSelect(
+      "topMonth"
+    );
+
 
     renderHistoryTopExpenses();
 
@@ -2290,7 +3253,10 @@ function showTab(tab,button){
 
 }
 
-/* ================= OVERVIEW ================= */
+
+/* =====================================================
+   OVERVIEW
+===================================================== */
 
 function renderOverview(){
 
@@ -2298,17 +3264,23 @@ function renderOverview(){
     "categoryMonth"
   );
 
+
   renderCategoryChart();
 
   renderComparison();
 
 }
 
-/* ================= ALL ================= */
+
+/* =====================================================
+   RENDER ALL
+===================================================== */
 
 function renderAll(){
 
-  const now=new Date();
+  const now=
+    new Date();
+
 
   document.getElementById(
     "todayDate"
@@ -2323,17 +3295,25 @@ function renderAll(){
       }
     );
 
+
   renderSummary();
 
   renderOverview();
 
-  fillMonthSelect("topMonth");
+
+  fillMonthSelect(
+    "topMonth"
+  );
+
 
   renderHistoryTopExpenses();
 
 }
 
-/* ================= ESCAPE ================= */
+
+/* =====================================================
+   ESCAPE HTML
+===================================================== */
 
 function escapeHtml(value){
 
@@ -2366,41 +3346,57 @@ function escapeHtml(value){
 
 }
 
-/* ================= TOAST ================= */
 
-function showToast(message){
+/* =====================================================
+   TOAST
+===================================================== */
+
+function showToast(
+  message
+){
 
   const toast=
     document.getElementById(
       "toast"
     );
 
-  toast.textContent=message;
 
-  toast.style.display="block";
+  toast.textContent=
+    message;
+
+
+  toast.style.display=
+    "block";
+
 
   clearTimeout(
     window.__toastTimer
   );
 
+
   window.__toastTimer=
     setTimeout(
       ()=>{
-        toast.style.display="none";
+        toast.style.display=
+          "none";
       },
       2200
     );
 
 }
 
-/* ================= START ================= */
+
+/* =====================================================
+   START
+===================================================== */
 
 (function(){
 
   if(
     localStorage.getItem(
       "chi_tieu_dark"
-    )==="true"
+    ) ===
+    "true"
   ){
 
     document.body.classList.add(
@@ -2409,23 +3405,28 @@ function showToast(message){
 
   }
 
+
   const budget=
     localStorage.getItem(
       BUDGET_KEY
     );
 
+
   if(budget){
 
     document.getElementById(
       "budgetInput"
-    ).value=budget;
+    ).value=
+      budget;
 
   }
+
 
   document.getElementById(
     "historyDate"
   ).value=
     localDateString();
+
 
   renderAll();
 
@@ -2433,7 +3434,10 @@ function showToast(message){
 
 })();
 
-/* ================= SERVICE WORKER ================= */
+
+/* =====================================================
+   SERVICE WORKER
+===================================================== */
 
 if(
   "serviceWorker" in navigator
@@ -2442,15 +3446,17 @@ if(
   window.addEventListener(
     "load",
     ()=>{
+
       navigator.serviceWorker
         .register("./sw.js")
         .catch(
-          err=>
+          err =>
             console.log(
               "SW error:",
               err
             )
         );
+
     }
   );
 
