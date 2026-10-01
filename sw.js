@@ -1,4 +1,4 @@
-const CACHE = "chi-tieu-v9";
+const CACHE = "chi-tieu-v10";
 
 const FILES = [
   "./",
