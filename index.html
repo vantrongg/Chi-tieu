@@ -598,6 +598,35 @@ button{
       >
 
     </div>
+    <div class="section">
+
+  <div class="section-title">
+    🏆 Top khoản chi
+  </div>
+
+  <div class="history-top-controls">
+
+    <select
+      id="historyTopLimit"
+      onchange="renderHistoryTopExpenses()"
+    >
+      <option value="5">Top 5</option>
+      <option value="10">Top 10</option>
+      <option value="20">Top 20</option>
+    </select>
+
+    <select
+      id="historyTopMonth"
+      onchange="renderHistoryTopExpenses()"
+    >
+      <option value="all">📅 Tất cả tháng</option>
+    </select>
+
+  </div>
+
+  <div id="historyTopExpenses"></div>
+
+</div>
 
 
     <div class="section">
@@ -1914,7 +1943,242 @@ function addHistoryExpense(){
 
 }
 
+/* ================= HISTORY TOP ================= */
 
+function normalizeSearchText(value){
+
+  return String(value || "")
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g,"");
+
+}
+
+
+function populateHistoryTopMonths(){
+
+  const select =
+    document.getElementById(
+      "historyTopMonth"
+    );
+
+  if(!select) return;
+
+  const expenses =
+    getExpenses();
+
+  const months =
+    new Set();
+
+  expenses.forEach(item => {
+
+    const d =
+      expenseDate(item);
+
+    months.add(
+      monthKey(d)
+    );
+
+  });
+
+  const sortedMonths =
+    [...months]
+      .sort()
+      .reverse();
+
+  const oldValue =
+    select.value;
+
+  select.innerHTML =
+    `<option value="all">
+      📅 Tất cả tháng
+    </option>` +
+
+    sortedMonths
+      .map(key => {
+
+        const parts =
+          key.split("-");
+
+        return `
+          <option value="${key}">
+            📆 Tháng ${parts[1]}/${parts[0]}
+          </option>
+        `;
+
+      })
+      .join("");
+
+  if(
+    oldValue === "all" ||
+    sortedMonths.includes(oldValue)
+  ){
+
+    select.value =
+      oldValue;
+
+  }else{
+
+    select.value =
+      "all";
+
+  }
+
+}
+
+
+function renderHistoryTopExpenses(){
+
+  const limitSelect =
+    document.getElementById(
+      "historyTopLimit"
+    );
+
+  const monthSelect =
+    document.getElementById(
+      "historyTopMonth"
+    );
+
+  const container =
+    document.getElementById(
+      "historyTopExpenses"
+    );
+
+  if(
+    !limitSelect ||
+    !monthSelect ||
+    !container
+  ){
+
+    return;
+
+  }
+
+  const limit =
+    Number(
+      limitSelect.value
+    ) || 5;
+
+  const selectedMonth =
+    monthSelect.value || "all";
+
+  let expenses =
+    getExpenses();
+
+  /* Lọc theo tháng */
+
+  if(
+    selectedMonth !== "all"
+  ){
+
+    expenses =
+      expenses.filter(item => {
+
+        return (
+          monthKey(
+            expenseDate(item)
+          ) === selectedMonth
+        );
+
+      });
+
+  }
+
+  /* Sắp xếp tiền lớn -> nhỏ */
+
+  expenses.sort(
+    (a,b) =>
+      Number(b.amount) -
+      Number(a.amount)
+  );
+
+  /* Lấy Top */
+
+  expenses =
+    expenses.slice(
+      0,
+      limit
+    );
+
+  if(
+    expenses.length === 0
+  ){
+
+    container.innerHTML =
+      `<div class="empty">
+        📭 Chưa có khoản chi
+      </div>`;
+
+    return;
+
+  }
+
+  container.innerHTML =
+    expenses.map(
+      (item,index) => {
+
+        const d =
+          expenseDate(item);
+
+        const dateOnly =
+          item.dateOnly ||
+          localDateString(d);
+
+        let rank;
+
+        if(index === 0){
+
+          rank = "🥇";
+
+        }else if(index === 1){
+
+          rank = "🥈";
+
+        }else if(index === 2){
+
+          rank = "🥉";
+
+        }else{
+
+          rank =
+            String(index + 1);
+
+        }
+
+        return `
+
+          <div class="history-top-item">
+
+            <div class="history-top-rank">
+              ${rank}
+            </div>
+
+            <div class="history-top-info">
+
+              <div class="history-top-name">
+                ${escapeHtml(item.text)}
+              </div>
+
+              <div class="history-top-meta">
+                ${item.category}
+                ·
+                ${formatDateDisplay(dateOnly)}
+              </div>
+
+            </div>
+
+            <div class="history-top-money">
+              ${formatMoney(item.amount)}
+            </div>
+
+          </div>
+
+        `;
+
+      }
+    ).join("");
+
+}
 /* ================= HISTORY LIST ================= */
 
 function renderHistory(){
