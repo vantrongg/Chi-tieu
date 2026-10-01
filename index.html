@@ -2,19 +2,13 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#111827">
-
 <link rel="manifest" href="./manifest.json">
 <link rel="icon" href="./icon-512.PNG">
-
 <title>Quản lý chi tiêu</title>
 
 <style>
-
 *{
   box-sizing:border-box;
   -webkit-tap-highlight-color:transparent;
@@ -22,13 +16,7 @@
 
 body{
   margin:0;
-  font-family:
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    Roboto,
-    sans-serif;
-
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
   background:#f3f4f6;
   color:#111827;
 }
@@ -44,9 +32,6 @@ body.dark{
   padding:16px;
   padding-bottom:100px;
 }
-
-
-/* ================= HEADER ================= */
 
 .header{
   text-align:center;
@@ -68,9 +53,6 @@ body.dark{
   color:#9ca3af;
 }
 
-
-/* ================= SUMMARY ================= */
-
 .summary{
   display:grid;
   grid-template-columns:repeat(2,1fr);
@@ -78,17 +60,22 @@ body.dark{
   margin-bottom:15px;
 }
 
-.card{
+.card,
+.add-box,
+.section{
   background:white;
   border-radius:16px;
-  padding:15px;
-
-  box-shadow:
-    0 2px 8px rgba(0,0,0,.06);
+  box-shadow:0 2px 8px rgba(0,0,0,.06);
 }
 
-.dark .card{
+.dark .card,
+.dark .add-box,
+.dark .section{
   background:#1f2937;
+}
+
+.card{
+  padding:15px;
 }
 
 .card-title{
@@ -106,21 +93,14 @@ body.dark{
   font-weight:700;
 }
 
-
-/* ================= ADD ================= */
-
 .add-box{
-  background:white;
   padding:15px;
-  border-radius:16px;
   margin-bottom:15px;
-
-  box-shadow:
-    0 2px 8px rgba(0,0,0,.06);
 }
 
-.dark .add-box{
-  background:#1f2937;
+.section{
+  padding:16px;
+  margin-bottom:15px;
 }
 
 .section-title{
@@ -139,10 +119,8 @@ input,
 select{
   width:100%;
   padding:13px;
-
   border:1px solid #d1d5db;
   border-radius:12px;
-
   background:white;
   color:#111827;
 }
@@ -164,15 +142,10 @@ button{
 .add-btn{
   width:100%;
   margin-top:10px;
-
   background:#2563eb;
   color:white;
-
   font-weight:600;
 }
-
-
-/* ================= TAB ================= */
 
 .tab-content{
   display:none;
@@ -182,34 +155,10 @@ button{
   display:block;
 }
 
-
-/* ================= SECTION ================= */
-
-.section{
-  background:white;
-  border-radius:16px;
-  padding:16px;
-  margin-bottom:15px;
-
-  box-shadow:
-    0 2px 8px rgba(0,0,0,.06);
-}
-
-.dark .section{
-  background:#1f2937;
-}
-
-
-/* ================= MONTH ================= */
-
 .month-row{
   display:flex;
   gap:10px;
-  align-items:center;
 }
-
-
-/* ================= CATEGORY ================= */
 
 .category-item{
   margin-bottom:14px;
@@ -219,18 +168,14 @@ button{
   display:flex;
   justify-content:space-between;
   gap:10px;
-
   margin-bottom:6px;
-
   font-size:14px;
 }
 
 .bar-bg{
   height:10px;
-
   background:#e5e7eb;
   border-radius:10px;
-
   overflow:hidden;
 }
 
@@ -244,9 +189,6 @@ button{
   background:#2563eb;
 }
 
-
-/* ================= EMPTY ================= */
-
 .empty{
   text-align:center;
   color:#6b7280;
@@ -256,9 +198,6 @@ button{
 .dark .empty{
   color:#9ca3af;
 }
-
-
-/* ================= COMPARISON ================= */
 
 .compare-box{
   display:grid;
@@ -290,16 +229,11 @@ button{
   font-weight:700;
 }
 
-
-/* ================= EXPENSE ================= */
-
 .expense-row{
   display:flex;
   justify-content:space-between;
   gap:10px;
-
   padding:12px 0;
-
   border-bottom:1px solid #e5e7eb;
 }
 
@@ -318,7 +252,7 @@ button{
 
 .expense-text{
   font-weight:600;
-  word-break:break-word;
+  overflow-wrap:anywhere;
 }
 
 .expense-meta{
@@ -339,19 +273,14 @@ button{
 .delete-btn{
   background:#fee2e2;
   color:#dc2626;
-
   padding:7px 10px;
   margin-top:5px;
 }
-
-
-/* ================= HISTORY ================= */
 
 .quick-dates{
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:7px;
-
   margin:10px 0;
 }
 
@@ -372,14 +301,62 @@ button{
 .history-add button{
   width:100%;
   margin-top:8px;
-
   background:#2563eb;
   color:white;
 }
 
+/* TOP EXPENSE */
+.top-controls{
+  display:grid;
+  grid-template-columns:1fr 1.5fr;
+  gap:10px;
+  margin-bottom:10px;
+}
 
-/* ================= SETTINGS ================= */
+.top-label{
+  display:block;
+  font-size:12px;
+  color:#6b7280;
+  margin-bottom:5px;
+}
 
+.dark .top-label{
+  color:#9ca3af;
+}
+
+.top-note{
+  font-size:12px;
+  color:#6b7280;
+  margin-bottom:5px;
+}
+
+.dark .top-note{
+  color:#9ca3af;
+}
+
+.top-row{
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+}
+
+.rank{
+  width:32px;
+  height:32px;
+  min-width:32px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  background:#e5e7eb;
+  font-weight:700;
+}
+
+.dark .rank{
+  background:#374151;
+}
+
+/* SETTINGS */
 .setting-item{
   padding:14px 0;
   border-bottom:1px solid #e5e7eb;
@@ -410,35 +387,22 @@ button{
 }
 
 .danger{
-  background:#dc2626 !important;
-  color:white !important;
+  background:#dc2626!important;
+  color:white!important;
 }
 
-
-/* ================= NAV ================= */
-
+/* NAV */
 .bottom-nav{
   position:fixed;
-
   bottom:0;
   left:50%;
-
   transform:translateX(-50%);
-
   width:min(700px,100%);
-
   display:grid;
   grid-template-columns:repeat(3,1fr);
-
   background:white;
-
   border-top:1px solid #e5e7eb;
-
-  padding:
-    8px
-    10px
-    calc(8px + env(safe-area-inset-bottom));
-
+  padding:8px 10px calc(8px + env(safe-area-inset-bottom));
   z-index:100;
 }
 
@@ -462,128 +426,73 @@ button{
   font-weight:700;
 }
 
-
-/* ================= TOAST ================= */
-
 #toast{
   position:fixed;
-
   left:50%;
   bottom:85px;
-
   transform:translateX(-50%);
-
   background:#111827;
   color:white;
-
   padding:10px 16px;
-
   border-radius:10px;
-
   display:none;
-
   z-index:200;
-
   font-size:14px;
+  max-width:90%;
+  text-align:center;
 }
 
+@media(max-width:420px){
+  .top-controls{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .card-value{
+    font-size:18px;
+  }
+}
 </style>
 </head>
-
 
 <body>
 
 <div class="app">
 
-
-<!-- ================= HEADER ================= -->
-
+<!-- HEADER -->
 <div class="header">
-
   <h1>💰 Quản lý chi tiêu</h1>
-
-  <div
-    class="date"
-    id="todayDate">
-  </div>
-
+  <div class="date" id="todayDate"></div>
 </div>
 
-
-<!-- ================= SUMMARY ================= -->
-
+<!-- SUMMARY -->
 <div class="summary">
 
   <div class="card">
-
-    <div class="card-title">
-      📅 Hôm nay
-    </div>
-
-    <div
-      class="card-value"
-      id="todayTotal">
-      0đ
-    </div>
-
+    <div class="card-title">📅 Hôm nay</div>
+    <div class="card-value" id="todayTotal">0đ</div>
   </div>
 
-
   <div class="card">
-
-    <div class="card-title">
-      📆 Tháng này
-    </div>
-
-    <div
-      class="card-value"
-      id="monthTotal">
-      0đ
-    </div>
-
+    <div class="card-title">📆 Tháng này</div>
+    <div class="card-value" id="monthTotal">0đ</div>
   </div>
 
-
   <div class="card">
-
-    <div class="card-title">
-      🗓️ Năm nay
-    </div>
-
-    <div
-      class="card-value"
-      id="yearTotal">
-      0đ
-    </div>
-
+    <div class="card-title">🗓️ Năm nay</div>
+    <div class="card-value" id="yearTotal">0đ</div>
   </div>
 
-
   <div class="card">
-
-    <div class="card-title">
-      🎯 Ngân sách
-    </div>
-
-    <div
-      class="card-value"
-      id="budgetTotal">
-      Chưa đặt
-    </div>
-
-    <div
-      class="card-title"
-      id="budgetPercent">
+    <div class="card-title">🎯 Ngân sách</div>
+    <div class="card-value" id="budgetTotal">Chưa đặt</div>
+    <div class="card-title" id="budgetPercent">
       💡 Hãy đặt ngân sách tháng
     </div>
-
   </div>
 
 </div>
 
-
-<!-- ================= ADD ================= -->
-
+<!-- ADD -->
 <div class="add-box">
 
   <div class="section-title">
@@ -599,26 +508,15 @@ button{
 
   <button
     class="add-btn"
-    onclick="addTodayExpense()">
-
+    onclick="addTodayExpense()"
+  >
     ➕ Thêm khoản chi
-
   </button>
 
 </div>
 
-
-
-<!-- ================================================= -->
-<!-- ================= TỔNG QUAN ===================== -->
-<!-- ================================================= -->
-
-<div
-  id="overviewTab"
-  class="tab-content active">
-
-
-  <!-- CHI TIÊU THEO LOẠI -->
+<!-- ================= TỔNG QUAN ================= -->
+<div id="overviewTab" class="tab-content active">
 
   <div class="section">
 
@@ -626,27 +524,21 @@ button{
       📊 Chi tiêu theo loại
     </div>
 
-
     <div class="month-row">
 
       <select
         id="categoryMonth"
-        onchange="renderOverview()">
-      </select>
+        onchange="renderCategoryChart()"
+      ></select>
 
     </div>
-
 
     <div
       id="categoryChart"
-      style="margin-top:15px;">
-    </div>
+      style="margin-top:15px"
+    ></div>
 
   </div>
-
-
-
-  <!-- SO SÁNH -->
 
   <div class="section">
 
@@ -654,63 +546,49 @@ button{
       📈 So sánh tháng
     </div>
 
-
     <div class="compare-box">
 
       <div class="compare-item">
-
         <div class="compare-label">
           📆 Tháng này
         </div>
 
         <div
           class="compare-value"
-          id="compareCurrent">
+          id="compareCurrent"
+        >
           0đ
         </div>
-
       </div>
 
-
       <div class="compare-item">
-
         <div class="compare-label">
           📆 Tháng trước
         </div>
 
         <div
           class="compare-value"
-          id="comparePrevious">
+          id="comparePrevious"
+        >
           0đ
         </div>
-
       </div>
 
     </div>
 
-
     <div
       id="compareText"
-      style="margin-top:12px;font-size:14px;">
-    </div>
+      style="margin-top:12px;font-size:14px"
+    ></div>
 
   </div>
 
 </div>
 
+<!-- ================= LỊCH SỬ ================= -->
+<div id="historyTab" class="tab-content">
 
-
-<!-- ================================================= -->
-<!-- ================= LỊCH SỬ ====================== -->
-<!-- ================================================= -->
-
-<div
-  id="historyTab"
-  class="tab-content">
-
-
-  <!-- TÌM KIẾM -->
-
+  <!-- SEARCH -->
   <div class="section">
 
     <div class="section-title">
@@ -726,43 +604,34 @@ button{
 
   </div>
 
-
-
-  <!-- THÊM THEO NGÀY -->
-
+  <!-- ADD BY DATE -->
   <div class="section">
 
     <div class="section-title">
       📅 Thêm khoản chi theo ngày
     </div>
 
-
     <div class="quick-dates">
 
-      <button
-        onclick="setHistoryDate(0)">
+      <button onclick="setHistoryDate(0)">
         📅 Hôm nay
       </button>
 
-      <button
-        onclick="setHistoryDate(-1)">
+      <button onclick="setHistoryDate(-1)">
         ⏪ Hôm qua
       </button>
 
-      <button
-        onclick="setHistoryDate(-2)">
+      <button onclick="setHistoryDate(-2)">
         📆 2 ngày trước
       </button>
 
     </div>
-
 
     <input
       type="date"
       id="historyDate"
       onchange="renderHistory()"
     >
-
 
     <div class="history-add">
 
@@ -772,73 +641,80 @@ button{
         placeholder="Ví dụ: 50k ăn sáng"
       >
 
-
-      <button
-        onclick="addHistoryExpense()">
-
+      <button onclick="addHistoryExpense()">
         ➕ Thêm vào ngày đã chọn
-
       </button>
 
     </div>
 
   </div>
 
-
-
-  <!-- ================= TOP KHOẢN CHI ================= -->
-
+  <!-- TOP -->
   <div class="section">
 
     <div class="section-title">
       💸 Top khoản chi
     </div>
 
+    <div class="top-controls">
+
+      <div>
+        <label class="top-label">
+          🔢 Hiển thị
+        </label>
+
+        <select
+          id="topCount"
+          onchange="renderHistoryTopExpenses()"
+        >
+          <option value="5">Top 5</option>
+          <option value="10">Top 10</option>
+        </select>
+      </div>
+
+      <div>
+        <label class="top-label">
+          📅 Chọn tháng
+        </label>
+
+        <select
+          id="topMonth"
+          onchange="renderHistoryTopExpenses()"
+        ></select>
+      </div>
+
+    </div>
 
     <div
-      id="historyTopExpenses">
-    </div>
+      class="top-note"
+      id="topNote"
+    ></div>
+
+    <div id="historyTopExpenses"></div>
 
   </div>
 
-
-
-  <!-- ================= LỊCH SỬ ================= -->
-
+  <!-- HISTORY -->
   <div class="section">
 
     <div class="section-title">
       📜 Lịch sử
     </div>
 
-
-    <div
-      id="historyList">
-    </div>
+    <div id="historyList"></div>
 
   </div>
 
 </div>
 
-
-
-<!-- ================================================= -->
-<!-- ================= CÀI ĐẶT ======================= -->
-<!-- ================================================= -->
-
-<div
-  id="settingsTab"
-  class="tab-content">
-
+<!-- ================= CÀI ĐẶT ================= -->
+<div id="settingsTab" class="tab-content">
 
   <div class="section">
 
     <div class="section-title">
       ⚙️ Cài đặt
     </div>
-
-
-    <!-- NGÂN SÁCH -->
 
     <div class="setting-item">
 
@@ -854,17 +730,12 @@ button{
 
       <button
         class="setting-btn"
-        onclick="saveBudget()">
-
+        onclick="saveBudget()"
+      >
         💾 Lưu ngân sách
-
       </button>
 
     </div>
-
-
-
-    <!-- BACKUP -->
 
     <div class="setting-item">
 
@@ -874,17 +745,12 @@ button{
 
       <button
         class="setting-btn"
-        onclick="backupData()">
-
+        onclick="backupData()"
+      >
         💾 Sao lưu dữ liệu
-
       </button>
 
     </div>
-
-
-
-    <!-- RESTORE -->
 
     <div class="setting-item">
 
@@ -900,17 +766,12 @@ button{
 
       <button
         class="setting-btn"
-        onclick="restoreData()">
-
+        onclick="restoreData()"
+      >
         ♻️ Khôi phục dữ liệu
-
       </button>
 
     </div>
-
-
-
-    <!-- CSV -->
 
     <div class="setting-item">
 
@@ -920,17 +781,12 @@ button{
 
       <button
         class="setting-btn"
-        onclick="exportCSV()">
-
+        onclick="exportCSV()"
+      >
         📤 Xuất CSV
-
       </button>
 
     </div>
-
-
-
-    <!-- DARK -->
 
     <div class="setting-item">
 
@@ -940,17 +796,12 @@ button{
 
       <button
         class="setting-btn"
-        onclick="toggleDarkMode()">
-
+        onclick="toggleDarkMode()"
+      >
         🌙 Bật / tắt chế độ tối
-
       </button>
 
     </div>
-
-
-
-    <!-- DELETE -->
 
     <div class="setting-item">
 
@@ -960,10 +811,9 @@ button{
 
       <button
         class="setting-btn danger"
-        onclick="deleteAllData()">
-
+        onclick="deleteAllData()"
+      >
         🗑️ Xóa toàn bộ dữ liệu
-
       </button>
 
     </div>
@@ -974,77 +824,52 @@ button{
 
 </div>
 
-
-
-<!-- ================= BOTTOM NAV ================= -->
-
+<!-- NAV -->
 <div class="bottom-nav">
 
   <button
     class="nav-btn active"
-    onclick="showTab('overview',this)">
-
+    onclick="showTab('overview',this)"
+  >
     📊 Tổng quan
-
   </button>
-
 
   <button
     class="nav-btn"
-    onclick="showTab('history',this)">
-
+    onclick="showTab('history',this)"
+  >
     📜 Lịch sử
-
   </button>
-
 
   <button
     class="nav-btn"
-    onclick="showTab('settings',this)">
-
+    onclick="showTab('settings',this)"
+  >
     ⚙️ Cài đặt
-
   </button>
 
 </div>
 
-
 <div id="toast"></div>
-
-
 
 <script>
 
+/* ================= STORAGE ================= */
 
-/* ================================================= */
-/* STORAGE */
-/* ================================================= */
-
-const STORAGE_KEY =
-  "chi_tieu_v1";
-
-const BUDGET_KEY =
-  "chi_tieu_budget";
-
+const STORAGE_KEY = "chi_tieu_v1";
+const BUDGET_KEY = "chi_tieu_budget";
 
 function getExpenses(){
 
   try{
-
     return JSON.parse(
-      localStorage.getItem(
-        STORAGE_KEY
-      ) || "[]"
+      localStorage.getItem(STORAGE_KEY) || "[]"
     );
-
   }catch{
-
     return [];
-
   }
 
 }
-
 
 function saveExpenses(data){
 
@@ -1055,72 +880,44 @@ function saveExpenses(data){
 
 }
 
+/* ================= DATE ================= */
 
+function localDateString(date=new Date()){
 
-/* ================================================= */
-/* DATE */
-/* ================================================= */
+  const year=date.getFullYear();
 
-function localDateString(
-  date = new Date()
-){
+  const month=String(
+    date.getMonth()+1
+  ).padStart(2,"0");
 
-  const year =
-    date.getFullYear();
+  const day=String(
+    date.getDate()
+  ).padStart(2,"0");
 
-  const month =
-    String(
-      date.getMonth()+1
-    ).padStart(2,"0");
-
-  const day =
-    String(
-      date.getDate()
-    ).padStart(2,"0");
-
-  return (
-    year +
-    "-" +
-    month +
-    "-" +
-    day
-  );
+  return `${year}-${month}-${day}`;
 
 }
 
+function formatDateDisplay(dateString){
 
-function formatDateDisplay(
-  dateString
-){
+  if(!dateString) return "";
 
-  if(!dateString)
-    return "";
+  const p=dateString.split("-");
 
-  const parts =
-    dateString.split("-");
-
-  return (
-    parts[2] +
-    "/" +
-    parts[1] +
-    "/" +
-    parts[0]
-  );
+  return `${p[2]}/${p[1]}/${p[0]}`;
 
 }
-
 
 function expenseDate(item){
 
   if(item.dateOnly){
 
-    const parts =
-      item.dateOnly.split("-");
+    const p=item.dateOnly.split("-");
 
     return new Date(
-      Number(parts[0]),
-      Number(parts[1])-1,
-      Number(parts[2]),
+      Number(p[0]),
+      Number(p[1])-1,
+      Number(p[2]),
       12,
       0,
       0
@@ -1128,149 +925,137 @@ function expenseDate(item){
 
   }
 
-  return new Date(
-    item.date
-  );
+  return new Date(item.date);
 
 }
-
 
 function monthKey(date){
 
   return (
     date.getFullYear() +
     "-" +
-    String(
-      date.getMonth()+1
-    ).padStart(2,"0")
+    String(date.getMonth()+1).padStart(2,"0")
   );
 
 }
 
+function monthLabel(key){
 
+  const p=key.split("-");
 
-/* ================================================= */
-/* MONEY */
-/* ================================================= */
+  return `📆 Tháng ${p[1]}/${p[0]}`;
+
+}
+
+/* ================= MONEY ================= */
 
 function formatMoney(number){
 
   return (
-    new Intl.NumberFormat(
-      "vi-VN"
-    ).format(number || 0) +
+    new Intl.NumberFormat("vi-VN")
+      .format(number || 0) +
     "đ"
   );
 
 }
 
-
-
-/* ================================================= */
-/* PARSE AMOUNT */
-/* ================================================= */
+/* ================= PARSER ================= */
 
 function parseAmount(text){
 
-  let match =
-    text.match(
-      /(\d+(?:[.,]\d+)?)\s*(k|nghìn|ngàn|tr|triệu|đ)?/i
+  const t=text
+    .toLowerCase()
+    .replace(/\s+/g," ")
+    .trim();
+
+  /*
+    15tr5 = 15.5 triệu
+    15tr5 = 15.500.000
+  */
+
+  let match=t.match(
+    /(\d+(?:[.,]\d+)?)\s*(tr|triệu)(\d+)?/i
+  );
+
+  if(match){
+
+    let number=Number(
+      match[1].replace(",",".")
     );
 
+    if(match[3]){
 
-  if(!match)
-    return 0;
+      const extra=Number(match[3]);
 
+      number +=
+        extra /
+        Math.pow(10,match[3].length);
 
-  let numberText =
-    match[1];
+    }
 
-
-  let unit =
-    (
-      match[2] ||
-      ""
-    ).toLowerCase();
-
-
-  let number;
-
-
-  if(
-    !unit &&
-    /^\d{1,3}([.,]\d{3})+$/
-      .test(numberText)
-  ){
-
-    number =
-      Number(
-        numberText.replace(
-          /[.,]/g,
-          ""
-        )
-      );
-
-  }else{
-
-    number =
-      Number(
-        numberText.replace(
-          ",",
-          "."
-        )
-      );
+    return Math.round(
+      number * 1000000
+    );
 
   }
 
+  match=t.match(
+    /(\d+(?:[.,]\d+)?)\s*(k|nghìn|ngàn)\b/i
+  );
 
-  if(isNaN(number))
-    return 0;
+  if(match){
 
-
-  if(
-    unit === "k" ||
-    unit === "nghìn" ||
-    unit === "ngàn"
-  ){
-
-    number *= 1000;
+    return Math.round(
+      Number(match[1].replace(",",".")) *
+      1000
+    );
 
   }
 
+  match=t.match(
+    /(\d+(?:[.,]\d+)?)\s*đ\b/i
+  );
 
-  if(
-    unit === "tr" ||
-    unit === "triệu"
-  ){
+  if(match){
 
-    number *= 1000000;
+    return Math.round(
+      Number(match[1].replace(",","."))
+    );
 
   }
 
+  match=t.match(
+    /(\d{1,3}(?:[.,]\d{3})+)/
+  );
 
-  return Math.round(number);
+  if(match){
+
+    return Number(
+      match[1].replace(/[.,]/g,"")
+    );
+
+  }
+
+  match=t.match(
+    /(\d+(?:[.,]\d+)?)/
+  );
+
+  if(!match) return 0;
+
+  return Math.round(
+    Number(match[1].replace(",","."))
+  );
 
 }
 
-
-
-/* ================================================= */
-/* CATEGORY */
-/* ================================================= */
+/* ================= CATEGORY ================= */
 
 function getCategory(text){
 
-  const t =
-    text
-      .toLowerCase()
-      .normalize("NFD")
-      .replace(
-        /[\u0300-\u036f]/g,
-        ""
-      );
-
-
-  /* ĐI LẠI */
+  const t=text
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g,"");
 
   if(
     /xang|do xang|dau xe|nhien lieu|petrol|grab|taxi|gojek|be\b|xe om|ship|giao hang|gui xe|bai xe|parking|cau duong|sua xe|bao duong xe|rua xe|oto|o to|xe may|xe buyt|bus/.test(t)
@@ -1280,9 +1065,6 @@ function getCategory(text){
 
   }
 
-
-  /* ĂN UỐNG */
-
   if(
     /an sang|an trua|an toi|an vat|com|pho|bun|mi|my|chao|banh mi|do an|thuc an|ca phe|cafe|coffee|tra sua|nuoc uong|bia|quan an|nha hang|do uong/.test(t)
   ){
@@ -1290,9 +1072,6 @@ function getCategory(text){
     return "🍜 Ăn uống";
 
   }
-
-
-  /* MUA SẮM */
 
   if(
     /mua sam|quan ao|ao\b|quan\b|giay|dep|tui|balo|my pham|son|dau goi|sua rua mat|sieu thi|hang hoa|do dung|dien thoai|phu kien/.test(t)
@@ -1302,9 +1081,6 @@ function getCategory(text){
 
   }
 
-
-  /* GIẢI TRÍ */
-
   if(
     /game|lien minh|lol|steam|netflix|youtube|phim|rap|karaoke|giai tri|spotify|nhac/.test(t)
   ){
@@ -1313,45 +1089,30 @@ function getCategory(text){
 
   }
 
-
   return "📦 Khác";
 
 }
 
-
-
-/* ================================================= */
-/* ADD TODAY */
-/* ================================================= */
+/* ================= ADD ================= */
 
 function addTodayExpense(){
 
-  const input =
-    document.getElementById(
-      "expenseInput"
-    );
+  const input=
+    document.getElementById("expenseInput");
 
-
-  const text =
-    input.value.trim();
-
+  const text=input.value.trim();
 
   if(!text){
 
-    showToast(
-      "⚠️ Nhập khoản chi trước"
-    );
+    showToast("⚠️ Nhập khoản chi trước");
 
     return;
 
   }
 
+  const amount=parseAmount(text);
 
-  const amount =
-    parseAmount(text);
-
-
-  if(amount <= 0){
+  if(amount<=0){
 
     showToast(
       "⚠️ Không nhận diện được số tiền"
@@ -1361,48 +1122,33 @@ function addTodayExpense(){
 
   }
 
+  const dateOnly=localDateString();
 
-  const dateOnly =
-    localDateString();
+  const expense={
 
+    id:Date.now()+Math.random(),
 
-  const expense = {
+    text,
 
-    id:Date.now(),
-
-    text:text,
-
-    amount:amount,
+    amount,
 
     category:getCategory(text),
 
-    date:
-      new Date().toISOString(),
+    date:new Date().toISOString(),
 
-    dateOnly:dateOnly
+    dateOnly
 
   };
 
+  const expenses=getExpenses();
 
-  const expenses =
-    getExpenses();
+  expenses.push(expense);
 
+  saveExpenses(expenses);
 
-  expenses.push(
-    expense
-  );
-
-
-  saveExpenses(
-    expenses
-  );
-
-
-  input.value = "";
-
+  input.value="";
 
   renderAll();
-
 
   showToast(
     "✅ Đã thêm " +
@@ -1411,411 +1157,263 @@ function addTodayExpense(){
 
 }
 
-
-
-/* ================================================= */
-/* SUMMARY */
-/* ================================================= */
+/* ================= SUMMARY ================= */
 
 function renderSummary(){
 
-  const expenses =
-    getExpenses();
+  const expenses=getExpenses();
 
+  const today=localDateString();
 
-  const today =
-    localDateString();
+  const now=new Date();
 
+  const currentMonth=monthKey(now);
 
-  const now =
-    new Date();
+  const currentYear=now.getFullYear();
 
+  let todayTotal=0;
+  let monthTotal=0;
+  let yearTotal=0;
 
-  const currentMonth =
-    monthKey(now);
+  expenses.forEach(item=>{
 
+    const d=expenseDate(item);
 
-  const currentYear =
-    now.getFullYear();
+    const dateOnly=
+      item.dateOnly ||
+      localDateString(d);
 
+    if(dateOnly===today){
 
-  let todayTotal = 0;
-
-  let monthTotal = 0;
-
-  let yearTotal = 0;
-
-
-  expenses.forEach(
-    item => {
-
-      const d =
-        expenseDate(item);
-
-
-      const dateOnly =
-        item.dateOnly ||
-        localDateString(d);
-
-
-      if(
-        dateOnly === today
-      ){
-
-        todayTotal +=
-          item.amount;
-
-      }
-
-
-      if(
-        monthKey(d) ===
-        currentMonth
-      ){
-
-        monthTotal +=
-          item.amount;
-
-      }
-
-
-      if(
-        d.getFullYear() ===
-        currentYear
-      ){
-
-        yearTotal +=
-          item.amount;
-
-      }
+      todayTotal+=Number(item.amount);
 
     }
-  );
 
+    if(monthKey(d)===currentMonth){
+
+      monthTotal+=Number(item.amount);
+
+    }
+
+    if(d.getFullYear()===currentYear){
+
+      yearTotal+=Number(item.amount);
+
+    }
+
+  });
 
   document.getElementById(
     "todayTotal"
-  ).textContent =
-    formatMoney(
-      todayTotal
-    );
-
+  ).textContent=formatMoney(todayTotal);
 
   document.getElementById(
     "monthTotal"
-  ).textContent =
-    formatMoney(
-      monthTotal
-    );
-
+  ).textContent=formatMoney(monthTotal);
 
   document.getElementById(
     "yearTotal"
-  ).textContent =
-    formatMoney(
-      yearTotal
-    );
+  ).textContent=formatMoney(yearTotal);
 
-
-  renderBudget(
-    monthTotal
-  );
+  renderBudget(monthTotal);
 
 }
 
+/* ================= BUDGET ================= */
 
+function renderBudget(monthTotal){
 
-/* ================================================= */
-/* BUDGET */
-/* ================================================= */
+  const budget=Number(
+    localStorage.getItem(BUDGET_KEY)||0
+  );
 
-function renderBudget(
-  monthTotal
-){
+  const total=
+    document.getElementById("budgetTotal");
 
-  const budget =
-    Number(
-      localStorage.getItem(
-        BUDGET_KEY
-      ) || 0
+  const percent=
+    document.getElementById("budgetPercent");
+
+  if(budget>0){
+
+    const used=Math.round(
+      monthTotal/budget*100
     );
 
-
-  const budgetTotal =
-    document.getElementById(
-      "budgetTotal"
+    const remaining=Math.max(
+      0,
+      100-used
     );
 
+    total.textContent=
+      formatMoney(budget);
 
-  const budgetPercent =
-    document.getElementById(
-      "budgetPercent"
-    );
+    if(monthTotal>budget){
 
-
-  if(budget > 0){
-
-    const usedPercent =
-      Math.round(
-        (monthTotal / budget) *
-        100
+      const over=Math.round(
+        (monthTotal-budget)/
+        budget*100
       );
 
-
-    const remainingPercent =
-      Math.max(
-        0,
-        100-usedPercent
-      );
-
-
-    budgetTotal.textContent =
-      formatMoney(
-        budget
-      );
-
-
-    if(
-      monthTotal > budget
-    ){
-
-      const overPercent =
-        Math.round(
-          (
-            (monthTotal-budget) /
-            budget
-          ) * 100
-        );
-
-
-      budgetPercent.textContent =
+      percent.textContent=
         "⚠️ Đã vượt " +
-        overPercent +
+        over +
         "% ngân sách";
 
     }else{
 
-      budgetPercent.innerHTML =
+      percent.innerHTML=
         "📈 Đã dùng: " +
-        usedPercent +
+        used +
         "%<br>" +
         "💚 Còn lại: " +
-        remainingPercent +
+        remaining +
         "%";
 
     }
 
   }else{
 
-    budgetTotal.textContent =
-      "Chưa đặt";
+    total.textContent="Chưa đặt";
 
-
-    budgetPercent.textContent =
+    percent.textContent=
       "💡 Hãy đặt ngân sách tháng";
 
   }
 
 }
 
+/* ================= MONTH LIST ================= */
 
+function getAvailableMonths(){
 
-/* ================================================= */
-/* MONTH SELECT */
-/* ================================================= */
-
-function populateMonthSelect(){
-
-  const select =
-    document.getElementById(
-      "categoryMonth"
-    );
-
-
-  const expenses =
-    getExpenses();
-
-
-  const months =
-    new Set();
-
-
-  expenses.forEach(
-    item => {
-
-      months.add(
-        monthKey(
-          expenseDate(item)
-        )
-      );
-
-    }
-  );
-
+  const months=new Set();
 
   months.add(
-    monthKey(
-      new Date()
-    )
+    monthKey(new Date())
   );
 
+  getExpenses().forEach(item=>{
 
-  const sorted =
-    [...months]
-      .sort()
-      .reverse();
+    months.add(
+      monthKey(expenseDate(item))
+    );
 
+  });
 
-  const oldValue =
-    select.value;
+  return [...months].sort().reverse();
 
+}
 
-  select.innerHTML =
-    "";
+function fillMonthSelect(id){
 
+  const select=
+    document.getElementById(id);
 
-  sorted.forEach(
-    key => {
+  if(!select) return;
 
-      const parts =
-        key.split("-");
+  const old=select.value;
 
+  const months=getAvailableMonths();
 
-      const option =
-        document.createElement(
-          "option"
-        );
+  select.innerHTML="";
 
+  months.forEach(key=>{
 
-      option.value =
-        key;
+    const option=
+      document.createElement("option");
 
+    option.value=key;
 
-      option.textContent =
-        "📆 Tháng " +
-        parts[1] +
-        "/" +
-        parts[0];
+    option.textContent=
+      monthLabel(key);
 
+    select.appendChild(option);
 
-      select.appendChild(
-        option
-      );
+  });
 
-    }
-  );
+  if(months.includes(old)){
 
-
-  if(
-    sorted.includes(
-      oldValue
-    )
-  ){
-
-    select.value =
-      oldValue;
+    select.value=old;
 
   }else{
 
-    select.value =
-      monthKey(
-        new Date()
-      );
+    select.value=
+      monthKey(new Date());
 
   }
 
 }
 
+function populateMonthSelect(){
 
+  fillMonthSelect(
+    "categoryMonth"
+  );
 
-/* ================================================= */
-/* CATEGORY CHART */
-/* ================================================= */
+  fillMonthSelect(
+    "topMonth"
+  );
+
+}
+
+/* ================= CATEGORY CHART ================= */
 
 function renderCategoryChart(){
 
-  const selectedMonth =
+  const selected=
     document.getElementById(
       "categoryMonth"
     ).value;
 
-
-  const expenses =
-    getExpenses();
-
-
-  const categories = [
+  const categories=[
 
     "🍜 Ăn uống",
-
     "🚗 Đi lại",
-
     "🛒 Mua sắm",
-
     "🎮 Giải trí",
-
     "📦 Khác"
 
   ];
 
-
-  const totals = {};
-
+  const totals={};
 
   categories.forEach(
-    category => {
-
-      totals[category] =
-        0;
-
-    }
+    c=>totals[c]=0
   );
 
+  getExpenses().forEach(item=>{
 
-  expenses.forEach(
-    item => {
-
-      const d =
-        expenseDate(item);
-
+    if(
+      monthKey(expenseDate(item))===
+      selected
+    ){
 
       if(
-        monthKey(d) ===
-        selectedMonth
+        totals[item.category]!==undefined
       ){
 
-        if(
-          totals[item.category] !==
-          undefined
-        ){
-
-          totals[item.category] +=
-            Number(item.amount);
-
-        }
+        totals[item.category]+=
+          Number(item.amount);
 
       }
 
     }
+
+  });
+
+  const max=Math.max(
+    ...Object.values(totals),
+    0
   );
 
-
-  const max =
-    Math.max(
-      ...Object.values(totals),
-      0
-    );
-
-
-  const container =
+  const container=
     document.getElementById(
       "categoryChart"
     );
 
+  if(max===0){
 
-  if(max === 0){
-
-    container.innerHTML =
+    container.innerHTML=
       '<div class="empty">' +
       '📭 Tháng này chưa có khoản chi' +
       '</div>';
@@ -1824,287 +1422,227 @@ function renderCategoryChart(){
 
   }
 
+  container.innerHTML=
+    categories.map(category=>{
 
-  container.innerHTML =
-    categories.map(
-      category => {
+      const value=totals[category];
 
-        const value =
-          totals[category];
+      const width=Math.max(
+        value/max*100,
+        2
+      );
 
+      return `
 
-        const width =
-          Math.max(
-            (value / max) *
-            100,
-            2
-          );
+        <div class="category-item">
 
+          <div class="category-head">
 
-        return `
+            <span>${category}</span>
 
-          <div class="category-item">
-
-            <div class="category-head">
-
-              <span>
-                ${category}
-              </span>
-
-              <strong>
-                ${formatMoney(value)}
-              </strong>
-
-            </div>
-
-
-            <div class="bar-bg">
-
-              <div
-                class="bar"
-                style="width:${width}%">
-              </div>
-
-            </div>
+            <strong>
+              ${formatMoney(value)}
+            </strong>
 
           </div>
 
-        `;
+          <div class="bar-bg">
 
-      }
-    ).join("");
+            <div
+              class="bar"
+              style="width:${width}%"
+            ></div>
+
+          </div>
+
+        </div>
+
+      `;
+
+    }).join("");
 
 }
 
+/* ================= COMPARISON ================= */
 
+function getMonthTotal(key){
 
-/* ================================================= */
-/* MONTH COMPARISON */
-/* ================================================= */
-
-function getMonthTotal(
-  key
-){
-
-  let total = 0;
-
-
-  getExpenses().forEach(
-    item => {
-
-      const d =
-        expenseDate(item);
-
+  return getExpenses().reduce(
+    (sum,item)=>{
 
       if(
-        monthKey(d) ===
+        monthKey(expenseDate(item))===
         key
       ){
 
-        total +=
-          Number(
-            item.amount
-          );
+        return sum+
+          Number(item.amount);
 
       }
 
-    }
+      return sum;
+
+    },
+    0
   );
-
-
-  return total;
 
 }
 
-
 function renderComparison(){
 
-  const now =
-    new Date();
+  const now=new Date();
 
-
-  const currentKey =
+  const currentKey=
     monthKey(now);
 
-
-  const previousDate =
-    new Date(
-      now.getFullYear(),
-      now.getMonth()-1,
-      1
-    );
-
-
-  const previousKey =
+  const previousKey=
     monthKey(
-      previousDate
+      new Date(
+        now.getFullYear(),
+        now.getMonth()-1,
+        1
+      )
     );
 
+  const current=
+    getMonthTotal(currentKey);
 
-  const current =
-    getMonthTotal(
-      currentKey
-    );
-
-
-  const previous =
-    getMonthTotal(
-      previousKey
-    );
-
+  const previous=
+    getMonthTotal(previousKey);
 
   document.getElementById(
     "compareCurrent"
-  ).textContent =
-    formatMoney(
-      current
-    );
-
+  ).textContent=
+    formatMoney(current);
 
   document.getElementById(
     "comparePrevious"
-  ).textContent =
-    formatMoney(
-      previous
-    );
+  ).textContent=
+    formatMoney(previous);
 
-
-  const text =
+  const text=
     document.getElementById(
       "compareText"
     );
 
-
   if(
-    current === 0 &&
-    previous === 0
+    current===0 &&
+    previous===0
   ){
 
-    text.textContent =
+    text.textContent=
       "📭 Chưa có dữ liệu để so sánh.";
 
     return;
 
   }
 
+  if(previous===0){
 
-  if(previous === 0){
-
-    text.textContent =
-      "📊 Tháng này có chi tiêu, tháng trước chưa có dữ liệu.";
+    text.textContent=
+      "📊 Tháng này có chi tiêu, " +
+      "tháng trước chưa có dữ liệu.";
 
     return;
 
   }
 
+  if(current>previous){
 
-  if(current > previous){
+    const percent=Math.round(
+      (current-previous)/
+      previous*100
+    );
 
-    const percent =
-      Math.round(
-        (
-          (current-previous) /
-          previous
-        ) * 100
-      );
-
-
-    text.textContent =
+    text.textContent=
       "📈 Chi tiêu tăng " +
       percent +
       "% (" +
-      formatMoney(
-        current-previous
-      ) +
+      formatMoney(current-previous) +
       ") so với tháng trước.";
 
-  }
+  }else if(current<previous){
 
+    const percent=Math.round(
+      (previous-current)/
+      previous*100
+    );
 
-  else if(
-    current < previous
-  ){
-
-    const percent =
-      Math.round(
-        (
-          (previous-current) /
-          previous
-        ) * 100
-      );
-
-
-    text.textContent =
+    text.textContent=
       "📉 Chi tiêu giảm " +
       percent +
       "% (" +
-      formatMoney(
-        previous-current
-      ) +
+      formatMoney(previous-current) +
       ") so với tháng trước.";
 
-  }
+  }else{
 
-
-  else{
-
-    text.textContent =
+    text.textContent=
       "➡️ Chi tiêu bằng tháng trước.";
 
   }
 
 }
 
-
-
-/* ================================================= */
-/* TOP EXPENSES - HISTORY */
-/* ================================================= */
+/* ================= TOP EXPENSE ================= */
 
 function renderHistoryTopExpenses(){
 
-  const expenses =
-    getExpenses();
+  const count=Number(
+    document.getElementById(
+      "topCount"
+    ).value || 5
+  );
 
+  const selectedMonth=
+    document.getElementById(
+      "topMonth"
+    ).value;
 
-  /*
-    TOP KHOẢN CHI CỦA THÁNG HIỆN TẠI
-  */
-
-  const currentMonth =
-    monthKey(
-      new Date()
-    );
-
-
-  const list =
-    expenses
-      .filter(
-        item =>
-          monthKey(
-            expenseDate(item)
-          ) ===
-          currentMonth
-      )
-      .sort(
-        (a,b) =>
-          b.amount -
-          a.amount
-      )
-      .slice(0,5);
-
-
-  const container =
+  const container=
     document.getElementById(
       "historyTopExpenses"
     );
 
+  const note=
+    document.getElementById(
+      "topNote"
+    );
 
-  if(
-    list.length === 0
-  ){
+  if(!selectedMonth){
 
-    container.innerHTML =
+    container.innerHTML=
+      '<div class="empty">' +
+      '📭 Chưa có tháng để xem' +
+      '</div>';
+
+    return;
+
+  }
+
+  const list=
+    getExpenses()
+      .filter(item=>
+        monthKey(
+          expenseDate(item)
+        )===selectedMonth
+      )
+      .sort(
+        (a,b)=>
+          Number(b.amount)-
+          Number(a.amount)
+      )
+      .slice(0,count);
+
+  note.textContent=
+    monthLabel(selectedMonth) +
+    " · " +
+    list.length +
+    " khoản lớn nhất";
+
+  if(list.length===0){
+
+    container.innerHTML=
       '<div class="empty">' +
       '📭 Tháng này chưa có khoản chi' +
       '</div>';
@@ -2113,55 +1651,52 @@ function renderHistoryTopExpenses(){
 
   }
 
-
-  container.innerHTML =
+  container.innerHTML=
     list.map(
-      (item,index) => {
+      (item,index)=>{
 
-        const d =
+        const d=
           expenseDate(item);
 
-
-        const dateOnly =
+        const dateOnly=
           item.dateOnly ||
           localDateString(d);
 
+        let rank="";
+
+        if(index===0) rank="🥇";
+        else if(index===1) rank="🥈";
+        else if(index===2) rank="🥉";
+        else rank=String(index+1);
 
         return `
 
           <div class="expense-row">
 
-            <div class="expense-left">
+            <div class="top-row">
 
-              <div class="expense-text">
-
-                ${index + 1}.
-                ${escapeHtml(
-                  item.text
-                )}
-
+              <div class="rank">
+                ${rank}
               </div>
 
+              <div class="expense-left">
 
-              <div class="expense-meta">
+                <div class="expense-text">
+                  ${escapeHtml(item.text)}
+                </div>
 
-                ${item.category}
-                · 📅
-                ${formatDateDisplay(
-                  dateOnly
-                )}
+                <div class="expense-meta">
+                  ${item.category}
+                  · 📅
+                  ${formatDateDisplay(dateOnly)}
+                </div>
 
               </div>
 
             </div>
 
-
             <div class="expense-money">
-
-              ${formatMoney(
-                item.amount
-              )}
-
+              ${formatMoney(item.amount)}
             </div>
 
           </div>
@@ -2173,61 +1708,38 @@ function renderHistoryTopExpenses(){
 
 }
 
+/* ================= HISTORY ================= */
 
+function setHistoryDate(offset){
 
-/* ================================================= */
-/* HISTORY DATE */
-/* ================================================= */
-
-function setHistoryDate(
-  offset
-){
-
-  const date =
-    new Date();
-
+  const date=new Date();
 
   date.setDate(
-    date.getDate() +
-    offset
+    date.getDate()+offset
   );
-
 
   document.getElementById(
     "historyDate"
-  ).value =
-    localDateString(
-      date
-    );
-
+  ).value=
+    localDateString(date);
 
   renderHistory();
 
 }
 
-
-
-/* ================================================= */
-/* ADD HISTORY */
-/* ================================================= */
-
 function addHistoryExpense(){
 
-  const input =
+  const input=
     document.getElementById(
       "historyInput"
     );
 
+  const text=input.value.trim();
 
-  const text =
-    input.value.trim();
-
-
-  const selectedDate =
+  const selectedDate=
     document.getElementById(
       "historyDate"
     ).value;
-
 
   if(!selectedDate){
 
@@ -2239,7 +1751,6 @@ function addHistoryExpense(){
 
   }
 
-
   if(!text){
 
     showToast(
@@ -2250,14 +1761,10 @@ function addHistoryExpense(){
 
   }
 
+  const amount=
+    parseAmount(text);
 
-  const amount =
-    parseAmount(
-      text
-    );
-
-
-  if(amount <= 0){
+  if(amount<=0){
 
     showToast(
       "⚠️ Không nhận diện được số tiền"
@@ -2267,259 +1774,163 @@ function addHistoryExpense(){
 
   }
 
+  const expense={
 
-  const expense = {
+    id:Date.now()+Math.random(),
 
-    id:Date.now(),
+    text,
 
-    text:text,
+    amount,
 
-    amount:amount,
+    category:getCategory(text),
 
-    category:
-      getCategory(text),
+    date:new Date(
+      selectedDate+"T12:00:00"
+    ).toISOString(),
 
-    date:
-      new Date(
-        selectedDate +
-        "T12:00:00"
-      ).toISOString(),
-
-    dateOnly:
-      selectedDate
+    dateOnly:selectedDate
 
   };
 
+  const expenses=getExpenses();
 
-  const expenses =
-    getExpenses();
+  expenses.push(expense);
 
+  saveExpenses(expenses);
 
-  expenses.push(
-    expense
-  );
-
-
-  saveExpenses(
-    expenses
-  );
-
-
-  input.value =
-    "";
-
+  input.value="";
 
   renderAll();
 
   renderHistory();
 
-  renderHistoryTopExpenses();
-
-
   showToast(
     "✅ Đã thêm " +
     formatMoney(amount) +
     " ngày " +
-    formatDateDisplay(
-      selectedDate
-    )
+    formatDateDisplay(selectedDate)
   );
 
 }
 
-
-
-/* ================================================= */
-/* HISTORY */
-/* ================================================= */
-
 function renderHistory(){
 
-  const search =
-    (
-      document.getElementById(
-        "searchInput"
-      )?.value ||
-      ""
-    )
-    .toLowerCase()
-    .trim();
+  const search=(
+    document.getElementById(
+      "searchInput"
+    )?.value || ""
+  )
+  .toLowerCase()
+  .trim();
 
-
-  const expenses =
+  const expenses=
     getExpenses()
       .sort(
-        (a,b) =>
-          expenseDate(b) -
+        (a,b)=>
+          expenseDate(b)-
           expenseDate(a)
       );
 
+  const filtered=
+    expenses.filter(item=>{
 
-  const filtered =
-    expenses.filter(
-      item => {
+      return (
+        !search ||
+        String(item.text)
+          .toLowerCase()
+          .includes(search) ||
+        String(item.category)
+          .toLowerCase()
+          .includes(search) ||
+        formatMoney(item.amount)
+          .includes(search)
+      );
 
-        if(!search)
-          return true;
+    });
 
-
-        return (
-
-          item.text
-            .toLowerCase()
-            .includes(search)
-
-          ||
-
-          item.category
-            .toLowerCase()
-            .includes(search)
-
-          ||
-
-          formatMoney(
-            item.amount
-          ).includes(search)
-
-        );
-
-      }
-    );
-
-
-  const container =
+  const container=
     document.getElementById(
       "historyList"
     );
 
+  if(filtered.length===0){
 
-  if(
-    filtered.length === 0
-  ){
-
-    container.innerHTML =
+    container.innerHTML=
       '<div class="empty">' +
       '📭 Không tìm thấy khoản chi' +
       '</div>';
-
-    renderHistoryTopExpenses();
 
     return;
 
   }
 
+  container.innerHTML=
+    filtered.map(item=>{
 
-  container.innerHTML =
-    filtered.map(
-      item => {
+      const d=
+        expenseDate(item);
 
-        const d =
-          expenseDate(item);
+      const dateOnly=
+        item.dateOnly ||
+        localDateString(d);
 
-
-        const dateOnly =
-          item.dateOnly ||
-          localDateString(d);
-
-
-        const time =
-          item.date
-            ? new Date(
-                item.date
-              ).toLocaleTimeString(
+      const time=
+        item.date
+          ? new Date(item.date)
+              .toLocaleTimeString(
                 "vi-VN",
                 {
                   hour:"2-digit",
                   minute:"2-digit"
                 }
               )
-            : "";
+          : "";
 
+      return `
 
-        return `
+        <div class="expense-row">
 
-          <div class="expense-row">
+          <div class="expense-left">
 
-            <div class="expense-left">
-
-              <div class="expense-text">
-
-                ${escapeHtml(
-                  item.text
-                )}
-
-              </div>
-
-
-              <div class="expense-meta">
-
-                ${item.category}
-
-                · 📅
-                ${formatDateDisplay(
-                  dateOnly
-                )}
-
-                ${
-                  time
-                    ? " · 🕐 " + time
-                    : ""
-                }
-
-              </div>
-
+            <div class="expense-text">
+              ${escapeHtml(item.text)}
             </div>
 
-
-            <div
-              style="
-                text-align:right;
-              ">
-
-              <div class="expense-money">
-
-                ${formatMoney(
-                  item.amount
-                )}
-
-              </div>
-
-
-              <button
-                class="delete-btn"
-                onclick="
-                  deleteExpense(
-                    ${item.id}
-                  )
-                ">
-
-                🗑️
-
-              </button>
-
+            <div class="expense-meta">
+              ${item.category}
+              · 📅
+              ${formatDateDisplay(dateOnly)}
+              ${time ? " · 🕐 "+time : ""}
             </div>
 
           </div>
 
-        `;
+          <div style="text-align:right">
 
-      }
-    ).join("");
+            <div class="expense-money">
+              ${formatMoney(item.amount)}
+            </div>
 
+            <button
+              class="delete-btn"
+              onclick="deleteExpense(${item.id})"
+            >
+              🗑️
+            </button>
 
-  renderHistoryTopExpenses();
+          </div>
+
+        </div>
+
+      `;
+
+    }).join("");
 
 }
 
+/* ================= DELETE ================= */
 
-
-/* ================================================= */
-/* DELETE */
-/* ================================================= */
-
-function deleteExpense(
-  id
-){
+function deleteExpense(id){
 
   if(
     !confirm(
@@ -2531,48 +1942,31 @@ function deleteExpense(
 
   }
 
-
-  const expenses =
-    getExpenses()
-      .filter(
-        item =>
-          item.id !== id
-      );
-
-
   saveExpenses(
-    expenses
+    getExpenses().filter(
+      item=>item.id!==id
+    )
   );
-
 
   renderAll();
 
   renderHistory();
 
-
-  showToast(
-    "🗑️ Đã xóa"
-  );
+  showToast("🗑️ Đã xóa");
 
 }
 
-
-
-/* ================================================= */
-/* SAVE BUDGET */
-/* ================================================= */
+/* ================= BUDGET ================= */
 
 function saveBudget(){
 
-  const value =
-    Number(
-      document.getElementById(
-        "budgetInput"
-      ).value
-    );
+  const value=Number(
+    document.getElementById(
+      "budgetInput"
+    ).value
+  );
 
-
-  if(value <= 0){
+  if(value<=0){
 
     showToast(
       "⚠️ Nhập ngân sách hợp lệ"
@@ -2582,15 +1976,12 @@ function saveBudget(){
 
   }
 
-
   localStorage.setItem(
     BUDGET_KEY,
     value
   );
 
-
   renderSummary();
-
 
   showToast(
     "✅ Đã lưu ngân sách"
@@ -2598,18 +1989,13 @@ function saveBudget(){
 
 }
 
-
-
-/* ================================================= */
-/* BACKUP */
-/* ================================================= */
+/* ================= BACKUP ================= */
 
 function backupData(){
 
-  const data = {
+  const data={
 
-    expenses:
-      getExpenses(),
+    expenses:getExpenses(),
 
     budget:
       localStorage.getItem(
@@ -2618,52 +2004,35 @@ function backupData(){
 
   };
 
+  const blob=new Blob(
+    [
+      JSON.stringify(
+        data,
+        null,
+        2
+      )
+    ],
+    {
+      type:"application/json"
+    }
+  );
 
-  const blob =
-    new Blob(
-      [
-        JSON.stringify(
-          data,
-          null,
-          2
-        )
-      ],
-      {
-        type:
-          "application/json"
-      }
-    );
+  const url=
+    URL.createObjectURL(blob);
 
+  const a=
+    document.createElement("a");
 
-  const url =
-    URL.createObjectURL(
-      blob
-    );
+  a.href=url;
 
-
-  const a =
-    document.createElement(
-      "a"
-    );
-
-
-  a.href =
-    url;
-
-
-  a.download =
+  a.download=
     "chi-tieu-backup-" +
     localDateString() +
     ".json";
 
-
   a.click();
 
-
-  URL.revokeObjectURL(
-    url
-  );
-
+  URL.revokeObjectURL(url);
 
   showToast(
     "💾 Đã sao lưu dữ liệu"
@@ -2671,19 +2040,14 @@ function backupData(){
 
 }
 
-
-
-/* ================================================= */
-/* RESTORE */
-/* ================================================= */
+/* ================= RESTORE ================= */
 
 function restoreData(){
 
-  const file =
+  const file=
     document.getElementById(
       "restoreFile"
     ).files[0];
-
 
   if(!file){
 
@@ -2695,92 +2059,71 @@ function restoreData(){
 
   }
 
-
-  const reader =
+  const reader=
     new FileReader();
 
+  reader.onload=function(e){
 
-  reader.onload =
-    function(e){
+    try{
 
-      try{
+      const data=
+        JSON.parse(
+          e.target.result
+        );
 
-        const data =
-          JSON.parse(
-            e.target.result
-          );
-
-
-        if(
-          !Array.isArray(
-            data.expenses
-          )
-        ){
-
-          throw new Error();
-
-        }
-
-
-        saveExpenses(
+      if(
+        !Array.isArray(
           data.expenses
-        );
+        )
+      ){
 
+        throw new Error();
 
-        if(data.budget){
+      }
 
-          localStorage.setItem(
-            BUDGET_KEY,
-            data.budget
-          );
+      saveExpenses(
+        data.expenses
+      );
 
-        }
+      if(data.budget){
 
-
-        renderAll();
-
-        renderHistory();
-
-        renderHistoryTopExpenses();
-
-
-        showToast(
-          "♻️ Khôi phục thành công"
-        );
-
-
-      }catch{
-
-        showToast(
-          "❌ File backup không hợp lệ"
+        localStorage.setItem(
+          BUDGET_KEY,
+          data.budget
         );
 
       }
 
-    };
+      renderAll();
 
+      renderHistory();
 
-  reader.readAsText(
-    file
-  );
+      showToast(
+        "♻️ Khôi phục thành công"
+      );
+
+    }catch{
+
+      showToast(
+        "❌ File backup không hợp lệ"
+      );
+
+    }
+
+  };
+
+  reader.readAsText(file);
 
 }
 
-
-
-/* ================================================= */
-/* CSV */
-/* ================================================= */
+/* ================= CSV ================= */
 
 function exportCSV(){
 
-  const expenses =
+  const expenses=
     getExpenses();
 
-
-  if(
-    expenses.length === 0
-  ){
+  if(expenses.length===0){
 
     showToast(
       "📭 Chưa có dữ liệu để xuất"
@@ -2790,101 +2133,63 @@ function exportCSV(){
 
   }
 
-
-  let csv =
+  let csv=
     "Ngày,Giờ,Nội dung,Loại,Số tiền\n";
 
+  expenses.forEach(item=>{
 
-  expenses.forEach(
-    item => {
+    const d=
+      expenseDate(item);
 
-      const d =
-        expenseDate(item);
+    const dateOnly=
+      item.dateOnly ||
+      localDateString(d);
 
-
-      const dateOnly =
-        item.dateOnly ||
-        localDateString(d);
-
-
-      const time =
-        item.date
-          ? new Date(
-              item.date
-            ).toLocaleTimeString(
+    const time=
+      item.date
+        ? new Date(item.date)
+            .toLocaleTimeString(
               "vi-VN",
               {
                 hour:"2-digit",
                 minute:"2-digit"
               }
             )
-          : "";
+        : "";
 
+    csv +=
+      `"${formatDateDisplay(dateOnly)}",` +
+      `"${time}",` +
+      `"${String(item.text)
+        .replace(/"/g,'""')}",` +
+      `"${item.category}",` +
+      `"${item.amount}"\n`;
 
-      csv +=
-        `"${formatDateDisplay(
-          dateOnly
-        )}",` +
+  });
 
-        `"${time}",` +
-
-        `"${String(
-          item.text
-        ).replace(
-          /"/g,
-          '""'
-        )}",` +
-
-        `"${item.category}",` +
-
-        `"${item.amount}"\n`;
-
+  const blob=new Blob(
+    ["\uFEFF"+csv],
+    {
+      type:"text/csv;charset=utf-8;"
     }
   );
 
+  const url=
+    URL.createObjectURL(blob);
 
-  const blob =
-    new Blob(
-      [
-        "\uFEFF" +
-        csv
-      ],
-      {
-        type:
-          "text/csv;charset=utf-8;"
-      }
-    );
+  const a=
+    document.createElement("a");
 
+  a.href=url;
 
-  const url =
-    URL.createObjectURL(
-      blob
-    );
-
-
-  const a =
-    document.createElement(
-      "a"
-    );
-
-
-  a.href =
-    url;
-
-
-  a.download =
+  a.download=
     "chi-tieu-" +
     localDateString() +
     ".csv";
 
-
   a.click();
 
-
-  URL.revokeObjectURL(
-    url
-  );
-
+  URL.revokeObjectURL(url);
 
   showToast(
     "📤 Đã xuất CSV"
@@ -2892,18 +2197,13 @@ function exportCSV(){
 
 }
 
-
-
-/* ================================================= */
-/* DARK MODE */
-/* ================================================= */
+/* ================= DARK MODE ================= */
 
 function toggleDarkMode(){
 
   document.body.classList.toggle(
     "dark"
   );
-
 
   localStorage.setItem(
     "chi_tieu_dark",
@@ -2914,11 +2214,7 @@ function toggleDarkMode(){
 
 }
 
-
-
-/* ================================================= */
-/* DELETE ALL */
-/* ================================================= */
+/* ================= DELETE ALL ================= */
 
 function deleteAllData(){
 
@@ -2932,16 +2228,13 @@ function deleteAllData(){
 
   }
 
-
   localStorage.removeItem(
     STORAGE_KEY
   );
 
-
   renderAll();
 
   renderHistory();
-
 
   showToast(
     "🗑️ Đã xóa toàn bộ dữ liệu"
@@ -2949,118 +2242,61 @@ function deleteAllData(){
 
 }
 
+/* ================= TABS ================= */
 
-
-/* ================================================= */
-/* TABS */
-/* ================================================= */
-
-function showTab(
-  tab,
-  button
-){
+function showTab(tab,button){
 
   document
-    .querySelectorAll(
-      ".tab-content"
-    )
+    .querySelectorAll(".tab-content")
     .forEach(
-      el =>
-        el.classList.remove(
-          "active"
-        )
+      el=>el.classList.remove("active")
     );
-
 
   document
-    .querySelectorAll(
-      ".nav-btn"
-    )
+    .querySelectorAll(".nav-btn")
     .forEach(
-      el =>
-        el.classList.remove(
-          "active"
-        )
+      el=>el.classList.remove("active")
     );
 
+  document
+    .getElementById(
+      tab+"Tab"
+    )
+    .classList.add("active");
 
-  if(
-    tab === "overview"
-  ){
+  button.classList.add("active");
 
-    document
-      .getElementById(
-        "overviewTab"
-      )
-      .classList.add(
-        "active"
-      );
+  if(tab==="history"){
 
-  }
-
-
-  if(
-    tab === "history"
-  ){
-
-    document
-      .getElementById(
-        "historyTab"
-      )
-      .classList.add(
-        "active"
-      );
-
-
-    const date =
+    const date=
       document.getElementById(
         "historyDate"
       );
 
-
     if(!date.value){
 
-      date.value =
+      date.value=
         localDateString();
 
     }
 
+    fillMonthSelect("topMonth");
+
+    renderHistoryTopExpenses();
 
     renderHistory();
 
   }
 
-
-  if(
-    tab === "settings"
-  ){
-
-    document
-      .getElementById(
-        "settingsTab"
-      )
-      .classList.add(
-        "active"
-      );
-
-  }
-
-
-  button.classList.add(
-    "active"
-  );
-
 }
 
-
-
-/* ================================================= */
-/* OVERVIEW */
-/* ================================================= */
+/* ================= OVERVIEW ================= */
 
 function renderOverview(){
 
-  populateMonthSelect();
+  fillMonthSelect(
+    "categoryMonth"
+  );
 
   renderCategoryChart();
 
@@ -3068,21 +2304,15 @@ function renderOverview(){
 
 }
 
-
-
-/* ================================================= */
-/* ALL */
-/* ================================================= */
+/* ================= ALL ================= */
 
 function renderAll(){
 
-  const now =
-    new Date();
-
+  const now=new Date();
 
   document.getElementById(
     "todayDate"
-  ).textContent =
+  ).textContent=
     now.toLocaleDateString(
       "vi-VN",
       {
@@ -3093,24 +2323,19 @@ function renderAll(){
       }
     );
 
-
   renderSummary();
 
   renderOverview();
+
+  fillMonthSelect("topMonth");
 
   renderHistoryTopExpenses();
 
 }
 
+/* ================= ESCAPE ================= */
 
-
-/* ================================================= */
-/* ESCAPE HTML */
-/* ================================================= */
-
-function escapeHtml(
-  value
-){
+function escapeHtml(value){
 
   return String(value)
 
@@ -3141,54 +2366,41 @@ function escapeHtml(
 
 }
 
+/* ================= TOAST ================= */
 
+function showToast(message){
 
-/* ================================================= */
-/* TOAST */
-/* ================================================= */
-
-function showToast(
-  message
-){
-
-  const toast =
+  const toast=
     document.getElementById(
       "toast"
     );
 
+  toast.textContent=message;
 
-  toast.textContent =
-    message;
+  toast.style.display="block";
 
-
-  toast.style.display =
-    "block";
-
-
-  setTimeout(
-    () => {
-
-      toast.style.display =
-        "none";
-
-    },
-    2200
+  clearTimeout(
+    window.__toastTimer
   );
+
+  window.__toastTimer=
+    setTimeout(
+      ()=>{
+        toast.style.display="none";
+      },
+      2200
+    );
 
 }
 
-
-
-/* ================================================= */
-/* START */
-/* ================================================= */
+/* ================= START ================= */
 
 (function(){
 
   if(
     localStorage.getItem(
       "chi_tieu_dark"
-    ) === "true"
+    )==="true"
   ){
 
     document.body.classList.add(
@@ -3197,28 +2409,23 @@ function showToast(
 
   }
 
-
-  const budget =
+  const budget=
     localStorage.getItem(
       BUDGET_KEY
     );
-
 
   if(budget){
 
     document.getElementById(
       "budgetInput"
-    ).value =
-      budget;
+    ).value=budget;
 
   }
 
-
   document.getElementById(
     "historyDate"
-  ).value =
+  ).value=
     localDateString();
-
 
   renderAll();
 
@@ -3226,11 +2433,7 @@ function showToast(
 
 })();
 
-
-
-/* ================================================= */
-/* SERVICE WORKER */
-/* ================================================= */
+/* ================= SERVICE WORKER ================= */
 
 if(
   "serviceWorker" in navigator
@@ -3238,20 +2441,16 @@ if(
 
   window.addEventListener(
     "load",
-    () => {
-
+    ()=>{
       navigator.serviceWorker
-        .register(
-          "./sw.js"
-        )
+        .register("./sw.js")
         .catch(
-          err =>
+          err=>
             console.log(
               "SW error:",
               err
             )
         );
-
     }
   );
 
