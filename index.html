@@ -2929,30 +2929,29 @@ function showTab(tab,button){
 
   if(tab === "history"){
 
-    document
-      .getElementById(
-        "historyTab"
-      )
-      .classList.add("active");
+  document
+    .getElementById(
+      "historyTab"
+    )
+    .classList.add("active");
 
+  const date =
+    document.getElementById(
+      "historyDate"
+    );
 
-    const date =
-      document.getElementById(
-        "historyDate"
-      );
-
-
-    if(!date.value){
-
-      date.value =
-        localDateString();
-
-    }
-
-
-    renderHistory();
-
+  if(!date.value){
+    date.value =
+      localDateString();
   }
+
+  renderHistory();
+
+  // 🏆 TOP KHOẢN CHI
+  populateHistoryTopMonths();
+  renderHistoryTopExpenses();
+
+}
 
 
   if(tab === "settings"){
